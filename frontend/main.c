@@ -778,6 +778,44 @@ static int decodeAACfile(char *aacfile, char *sndfile, char *adts_fn, int to_std
     return frameInfo.error;
 }
 
+/* A silent mono or stereo raw_data_block (no scale factor bands, so all-zero
+   spectra), used to drain the SBR/QMF delay line once the input is exhausted. */
+static size_t silent_frame(unsigned char channels, unsigned char *buf)
+{
+    unsigned int acc = 0, nbits = 0;
+    size_t len = 0;
+    int i, ch;
+
+#define PUT(v, n) do { \
+        for (i = (n) - 1; i >= 0; i--) { \
+            acc = (acc << 1) | (((unsigned)(v) >> i) & 1u); \
+            if (++nbits == 8) { buf[len++] = (unsigned char)acc; acc = 0; nbits = 0; } \
+        } \
+    } while (0)
+
+    if (channels != 1 && channels != 2)
+        return 0;
+    PUT(channels == 1 ? 0 : 1, 3); /* ID_SCE or ID_CPE */
+    PUT(0, 4);                     /* element_instance_tag */
+    if (channels == 2)
+        PUT(0, 1);                 /* common_window */
+    for (ch = 0; ch < channels; ch++)
+    {
+        PUT(0, 8);  /* global_gain */
+        PUT(0, 1);  /* ics_reserved_bit */
+        PUT(0, 2);  /* window_sequence: ONLY_LONG */
+        PUT(0, 1);  /* window_shape */
+        PUT(0, 6);  /* max_sfb */
+        PUT(0, 1);  /* predictor_data_present */
+        PUT(0, 3);  /* pulse, tns, gain control absent */
+    }
+    PUT(7, 3);      /* ID_END */
+    while (nbits != 0)
+        PUT(0, 1);
+#undef PUT
+    return len;
+}
+
 static int decodeMP4file(char *mp4file, char *sndfile, char *adts_fn, int to_stdout,
                   unsigned char outputFormat, int fileType, unsigned char downMatrix, int noGapless,
                   int infoOnly, int adts_out, float *song_length, float seek_to)
@@ -863,7 +901,7 @@ static int decodeMP4file(char *mp4file, char *sndfile, char *adts_fn, int to_std
         if (NeAACDecAudioSpecificConfig(mp4config.asc.buf, mp4config.asc.size, &mp4ASC) >= 0)
         {
             if (mp4ASC.frameLengthFlag == 1) framesize = 960;
-            if (mp4ASC.sbr_present_flag == 1 || mp4ASC.forceUpSampling)
+            if (mp4ASC.sbr_present_flag == 1 || (mp4ASC.forceUpSampling && !config->dontUpSampleImplicitSBR))
             {
                 framesize *= 2;
                 sbr_upsampled = 1;
@@ -894,7 +932,7 @@ static int decodeMP4file(char *mp4file, char *sndfile, char *adts_fn, int to_std
 
     /* Implicit SBR signaling declares the container at the core
        (pre-SBR) rate, not output rate. Rescale to output domain. */
-    if (mp4config.has_gapless_info && mp4config.samplerate > 0 &&
+    if (sbr_upsampled && mp4config.has_gapless_info && mp4config.samplerate > 0 &&
         mp4ASC.samplingFrequency > 0 && mp4ASC.samplingFrequency != mp4config.samplerate)
     {
         double rate_ratio = (double)mp4ASC.samplingFrequency / (double)mp4config.samplerate;
@@ -940,13 +978,34 @@ static int decodeMP4file(char *mp4file, char *sndfile, char *adts_fn, int to_std
     }
 
     mp4read_seek(startSampleId);
-    for (sampleId = startSampleId; sampleId < mp4config.frame.nsamples; sampleId++)
+    /* The decoder holds back the SBR/QMF delay of the last frame (it is also
+       run for implicit SBR on plain LC at low rates). Without a flush the tail
+       is lost, which gapless trimming would otherwise read as a short file. */
+    for (sampleId = startSampleId; sampleId <= mp4config.frame.nsamples; sampleId++)
     {
+        unsigned char silent[16];
+        unsigned char *frame_data = mp4config.bitbuf.data;
+        unsigned long frame_size = mp4config.bitbuf.size;
 
-        if (mp4read_frame())
-            break;
+        if (sampleId < mp4config.frame.nsamples)
+        {
+            if (mp4read_frame())
+                break;
+            frame_data = mp4config.bitbuf.data;
+            frame_size = mp4config.bitbuf.size;
+        }
+        else
+        {
+            if (!enable_gapless_trim || !sbr_upsampled || adts_out || target_valid_samples == 0 ||
+                written_audio_frames >= target_valid_samples)
+                break;
+            frame_size = silent_frame(mp4ASC.channelsConfiguration, silent);
+            if (frame_size == 0)
+                break;
+            frame_data = silent;
+        }
 
-        sample_buffer = NeAACDecDecode(hDecoder, &frameInfo, mp4config.bitbuf.data, mp4config.bitbuf.size);
+        sample_buffer = NeAACDecDecode(hDecoder, &frameInfo, frame_data, frame_size);
 
         if (!sample_buffer) {
             /* unable to decode file, abort */
