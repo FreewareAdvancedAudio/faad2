@@ -366,7 +366,6 @@ uint8_t master_frequency_table(sbr_info *sbr, uint8_t k0, uint8_t k2,
 #ifdef FIXED_POINT
     real_t rk2, rk0;
 #endif
-    (void)bs_alter_scale;  /* TODO: remove parameter? */
 
     /* mft only defined for k2 > k0 */
     if (k2 <= k0)
@@ -440,7 +439,7 @@ uint8_t master_frequency_table(sbr_info *sbr, uint8_t k0, uint8_t k2,
         return 0;
     }
 
-    nrBand1 = (uint8_t)(2 * find_bands(1 /* warped */, bands, k1, k2));
+    nrBand1 = (uint8_t)(2 * find_bands(bs_alter_scale ? 1 : 0, bands, k1, k2));
     nrBand1 = min(nrBand1, 63);
 
     q = find_initial_power(nrBand1, k1, k2);
@@ -467,13 +466,19 @@ uint8_t master_frequency_table(sbr_info *sbr, uint8_t k0, uint8_t k2,
 
     if (vDk1[0] < vDk0[nrBand0 - 1])
     {
-        int32_t change;
+        int32_t change, maxChange;
 
-        /* needed? */
-        qsort(vDk1, nrBand1 + 1, sizeof(vDk1[0]), int32cmp);
+        /* Sort exactly the nrBand1 widths: vDk1[nrBand1] is not a band and
+           holds 0, which sorting it in would move to the front. */
+        qsort(vDk1, nrBand1, sizeof(vDk1[0]), int32cmp);
         change = vDk0[nrBand0 - 1] - vDk1[0];
-        vDk1[0] = vDk0[nrBand0 - 1];
-        vDk1[nrBand1 - 1] = vDk1[nrBand1 - 1] - change;
+        /* ISO/IEC 14496-3 4.6.18.3.2.1: widen the first band of the upper
+           region by at most half the spread, taking it from the last band. */
+        maxChange = (vDk1[nrBand1 - 1] - vDk1[0]) / 2;
+        if (change > maxChange)
+            change = maxChange;
+        vDk1[0] += change;
+        vDk1[nrBand1 - 1] -= change;
     }
 
     /* needed? */
