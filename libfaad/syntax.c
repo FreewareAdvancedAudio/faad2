@@ -675,7 +675,9 @@ static uint8_t single_lfe_channel_element(NeAACDecStruct *hDecoder, bitfile *ld,
 #ifdef SBR_DEC
     /* check if next bitstream element is a fill element */
     /* if so, read it now so SBR decoding can be done in case of a file with SBR */
-    if (faad_showbits(ld, LEN_SE_ID) == ID_FIL)
+    /* an error resilient frame has no fill elements */
+    if ((hDecoder->object_type < ER_OBJECT_START) &&
+        (faad_showbits(ld, LEN_SE_ID) == ID_FIL))
     {
         faad_flushbits(ld, LEN_SE_ID);
 
@@ -803,7 +805,9 @@ static uint8_t channel_pair_element(NeAACDecStruct *hDecoder, bitfile *ld,
 #ifdef SBR_DEC
     /* check if next bitstream element is a fill element */
     /* if so, read it now so SBR decoding can be done in case of a file with SBR */
-    if (faad_showbits(ld, LEN_SE_ID) == ID_FIL)
+    /* an error resilient frame has no fill elements */
+    if ((hDecoder->object_type < ER_OBJECT_START) &&
+        (faad_showbits(ld, LEN_SE_ID) == ID_FIL))
     {
         faad_flushbits(ld, LEN_SE_ID);
 
