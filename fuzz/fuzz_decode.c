@@ -88,6 +88,8 @@ int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
     res = NeAACDecInit2(decoder, part1, len1, &sample_rate, &num_channels);
   } else {
     res = NeAACDecInit(decoder, part1, len1, &sample_rate, &num_channels);
+    /* bytes used by the header never exceed the input */
+    if (res > 0 && (size_t)res > len1) __builtin_trap();
   }
   if (use_drm) {
 #ifdef DRM_SUPPORT
@@ -103,15 +105,20 @@ int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
   if (seek_before) {
     NeAACDecPostSeekReset(decoder, 0x1234567);
   }
+  memset(&faad_info, 0, sizeof(faad_info));
   NeAACDecDecode(decoder, &faad_info, part2, len2);
+  /* bytes consumed never exceed the input */
+  if (faad_info.bytesconsumed > len2) __builtin_trap();
   if (seek_between) {
     NeAACDecPostSeekReset(decoder, -0x1234567);
   }
+  memset(&faad_info, 0, sizeof(faad_info));
   if (buffer_op == 0) {
     NeAACDecDecode(decoder, &faad_info, part3, len3);
   } else {
     NeAACDecDecode2(decoder, &faad_info, part3, len3, &buffer, buffer_size);
   }
+  if (faad_info.bytesconsumed > len3) __builtin_trap();
 
 cleanup:
   NeAACDecClose(decoder);

@@ -329,6 +329,13 @@ long NeAACDecInit(NeAACDecHandle hpDecoder,
             hDecoder->pce_set = 1;
 
             bits = bit2byte(faad_get_processed_bits(&ld));
+            /* a header longer than the buffer was read from the zeros
+               the bit reader returns past its end */
+            if (bits > buffer_size)
+            {
+                faad_endbits(&ld);
+                return -1;
+            }
 
         /* Check if an ADTS header is present */
         } else if (adts_frame(&adts, &ld) == 0) {
@@ -1016,12 +1023,15 @@ static void* aac_frame_decode(NeAACDecStruct *hDecoder,
 
     /* no more bit reading after this */
     bitsconsumed = faad_get_processed_bits(&ld);
-    hInfo->bytesconsumed = bit2byte(bitsconsumed);
-    if (ld.error)
+    /* the bit reader returns zeros past the end of the buffer, and a
+       frame without ID_END (error resilient, DRM) decodes them as data:
+       never report more bytes consumed than the caller passed */
+    if (ld.error || bit2byte(bitsconsumed) > buffer_size)
     {
         hInfo->error = 14;
         goto error;
     }
+    hInfo->bytesconsumed = bit2byte(bitsconsumed);
     faad_endbits(&ld);
 
 
