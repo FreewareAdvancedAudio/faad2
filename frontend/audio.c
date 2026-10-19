@@ -158,7 +158,9 @@ static size_t write_wav_header(audio_file *aufile)
 
     *p++ = 'R'; *p++ = 'I'; *p++ = 'F'; *p++ = 'F';
 
-    word32 = (data_size + (44 - 8) < (float)MAXWAVESIZE) ?
+    /* stdout is not rewound to fill in the final sizes. */
+    word32 = aufile->toStdio ? 0xFFFFFFFFUL :
+        (data_size + (44 - 8) < (float)MAXWAVESIZE) ?
         (unsigned long)data_size + (44 - 8)  :  (unsigned long)MAXWAVESIZE;
     *p++ = (unsigned char)(word32 >>  0);
     *p++ = (unsigned char)(word32 >>  8);
@@ -202,7 +204,7 @@ static size_t write_wav_header(audio_file *aufile)
 
     *p++ = 'd'; *p++ = 'a'; *p++ = 't'; *p++ = 'a';
 
-    word32 = data_size < MAXWAVESIZE ?
+    word32 = aufile->toStdio ? 0xFFFFFFFFUL : data_size < MAXWAVESIZE ?
         (unsigned long)data_size : (unsigned long)MAXWAVESIZE;
     *p++ = (unsigned char)(word32 >>  0);
     *p++ = (unsigned char)(word32 >>  8);
@@ -222,7 +224,9 @@ static size_t write_wav_extensible_header(audio_file *aufile, long channelMask)
 
     *p++ = 'R'; *p++ = 'I'; *p++ = 'F'; *p++ = 'F';
 
-    word32 = (data_size + (68 - 8) < (float)MAXWAVESIZE) ?
+    /* stdout is not rewound to fill in the final sizes. */
+    word32 = aufile->toStdio ? 0xFFFFFFFFUL :
+        (data_size + (68 - 8) < (float)MAXWAVESIZE) ?
         (unsigned long)data_size + (68 - 8)  :  (unsigned long)MAXWAVESIZE;
     *p++ = (unsigned char)(word32 >>  0);
     *p++ = (unsigned char)(word32 >>  8);
@@ -301,7 +305,7 @@ static size_t write_wav_extensible_header(audio_file *aufile, long channelMask)
 
     *p++ = 'd'; *p++ = 'a'; *p++ = 't'; *p++ = 'a';
 
-    word32 = data_size < MAXWAVESIZE ?
+    word32 = aufile->toStdio ? 0xFFFFFFFFUL : data_size < MAXWAVESIZE ?
         (unsigned long)data_size : (unsigned long)MAXWAVESIZE;
     *p++ = (unsigned char)(word32 >>  0);
     *p++ = (unsigned char)(word32 >>  8);

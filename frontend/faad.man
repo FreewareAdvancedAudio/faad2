@@ -77,6 +77,8 @@ Sets the processing to use the old MPEG\(hy4 AAC ADTS format when outputting in 
 .TP
 .B \-w ", \-\^\-stdio"
 Sets the processing output to be sent to the standard out.
+WAV output uses unknown RIFF and data sizes (0xFFFFFFFF) so that it can be
+read from a pipe. Use \fB\-o\fP for a WAV file with final sizes in its header.
 
 .SH "AUTHOR"
 Matthew W. S. Bell <matthew (at) bells23.org.uk>
