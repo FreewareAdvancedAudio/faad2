@@ -357,7 +357,6 @@ typedef float float32_t;
 
 #ifdef HAVE_SINF
 #  define sin sinf
-#error
 #endif
 #ifdef HAVE_COSF
 #  define cos cosf
