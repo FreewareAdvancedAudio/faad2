@@ -6,7 +6,7 @@ libfaad \- C library for AAC Decoding
 .ft B
 .nf
 
-#include <neaacec\&.h>
+#include <neaacdec\&.h>
 
 .HP
 .BI "char NEAACDECAPI *NeAACDecGetErrorMessage(" "" "unsigned char " errcode );
@@ -26,7 +26,7 @@ libfaad \- C library for AAC Decoding
 .BI "NeAACDecHandle " "hDecoder" ", NeAACDecConfigurationPtr " config ");"
 
 .HP
-/* Init the library based on info from the AAC file (ADTS/ADIF) */
+/* Init the library based on an ADTS header */
 .B "long NEAACDECAPI NeAACDecInit("
 .BI "NeAACDecHandle " hDecoder ", unsigned char *" buffer ", unsigned long " "buffer_size" ","
 .BI "unsigned long *" "samplerate" ", unsigned char *" "channels" ");"
@@ -60,11 +60,30 @@ libfaad \- C library for AAC Decoding
 .BI "unsigned char *" "pBuffer" ", unsigned long " "buffer_size" ","
 .BI "mp4AudioSpecificConfig *" "mp4ASC" ");"
 .PP
-For normal use link it with the linker option \-lfaad\&.
-.PP
-For Digital Radio Mondiale link it with the linker option \-lfaad_drm\&.
+For AAC playback link with \-lfaad. The historical \-lfaad_drm target name
+does not add DRM support.
 .sp
 .SH "DESCRIPTION"
+.PP
+This library is a compatibility shim over libfaad3. It implements only a
+subset of the legacy API and does not contain the original FAAD2 decoder.
+The \.3 suffix in this manual's name denotes manual section 3, not library
+version 3.
+.PP
+DRM initialization always fails. ADIF, LATM, MAIN/LTP/SSR/LD/ER profiles,
+fixed-point decoding, and raw AAC without an AudioSpecificConfig are
+unsupported. The useOldADTSFormat and dontUpSampleImplicitSBR settings are
+ignored, as are defObjectType and defSampleRate for stream decoding. The
+historical fixed-point library target names do not enable fixed-point
+decoding.
+.PP
+For new code, include <faad3.h>, link with libfaad3, and use
+faad_config_init(), faad_decoder_open(), and faad_decode_frame(). For the
+migration steps and behavior changes, see:
+.br
+.UR https://github.com/FreewareAdvancedAudio/faac/blob/master/docs/libfaad.md
+FAAD3 API and migration guide
+.UE
 .PP
 .B NeAACDecGetErrorMessage
 .PP
@@ -101,6 +120,9 @@ The following capabilities are defined:
 .PP
 .PP
 This function can be called anytime.
+.PP
+This compatibility library returns LC_DEC_CAP only; this mask does not
+describe its HE-AAC decoding support.
 .PP
 .B NeAACDecOpen 
 .PP NeAACDecHandle NEAACAPI NeAACDecOpen(void);
@@ -139,19 +161,14 @@ char *channels);
 .PP
 .PP
 .PP
-Initialises the decoder library using information from the AAC file.
-The buffer parameter should hold a small part of the AAC file, so that
-the initialization can be done based on the ADTS or ADIF header.
-Buffer can also be NULL, but then default initialization parameters will
-be used.
+Initialises the decoder using an ADTS stream header. The buffer must contain
+ADTS data; ADIF and initialization without stream data are unsupported.
 .PP
 Return values:
 .PP
 < 0 \[en] Error
 .PP
->= 0 \[en] Number of bytes read.
-This amount of bytes should be skipped by the program using the decoder
-library.
+0 \[en] OK; no input bytes are consumed by initialization.
 .PP
 This function fills the samplerate and channels parameters with the
 detected values.
@@ -178,26 +195,8 @@ detected values.
 .PP
 char NEAACDECAPI NeAACDecInitDRM(NeAACDecHandle *hDecoder, unsigned long samplerate, unsigned char channels);
 .PP
-Initialises the decoder library for Digital Radio Mondiale using the specified sample rate
-and a DRM specific channel configuration.
-.PP
-Return values:
-.PP
-< 0 \[en] Error
-.PP
-0 \- OK
-.PP
-Values for the channel configuration:
-.PP
-#define DRMCH_MONO          1
-.PP
-#define DRMCH_STEREO        2
-.PP
-#define DRMCH_SBR_MONO      3
-.PP
-#define DRMCH_SBR_STEREO    4
-.PP
-#define DRMCH_SBR_PS_STEREO 5
+DRM decoding is unsupported by this compatibility library. This function
+always returns 1 to report failure.
 .PP
 .B NeAACDecDecode
 .PP
@@ -258,9 +257,8 @@ typedef struct NeAACDecConfiguration
 .PP
 Members:
 .PP
-defObjectType: determines the default object type assumed when the
-library is initialized without any data from the AAC file (eg: when NULL
-is passed as buffer in NeAACDecInit()).
+defObjectType: retained for structure compatibility; it does not select the
+stream object type.
 Can be any of the following values:
 .PP
 #define MAIN \  \  \  1 /* MAIN */
@@ -281,9 +279,8 @@ Can be any of the following values:
 .PP
 #define DRM_ER_LC 27 /* special object type for DRM only if linking with \-lfaad_drm */
 .PP
-defSampleRate: determines the default samplerate assumed when the
-library is initialized.
-Default value is 44100.
+defSampleRate: retained for structure compatibility; it does not select the
+stream sample rate. The default value is 44100.
 .PP
 outputFormat: determines the output format returned by the decoder
 library.
@@ -303,13 +300,7 @@ downMatrix: determines whether a 5.1 channel AAC file should be
 downmatrixed to 2 channel output (value: 1) or whether the output should
 stay as 5.1 channels (value: 0).
 .PP
-useOldADTSFormat: determines whether the decoder should assume the
-currently defined 56 bit ADTS header (value: 0) or the 58 bit ADTS
-header (value: 1) defined in previous versions of the AAC standard.
-This value should normally always stay at the value 0, it only exists to
-provide playback capabilities for people that have AAC files with the
-old header format.
-All current encoders should output the new ADTS format.
+useOldADTSFormat: retained for structure compatibility; it is ignored.
 NeAACDecFrameInfo\ 
 .PP
 This structure is returned after decoding a frame and provides info
