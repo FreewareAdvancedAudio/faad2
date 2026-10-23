@@ -1,0 +1,1637 @@
+case stereo22_lc.adts.s16
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 7 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+10 frame err 0 samples 4096 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+case stereo22_lc.adts.flt
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 7 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+10 frame err 0 samples 4096 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+case stereo22_lc.adts.dm
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 7 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+10 frame err 0 samples 4096 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+case stereo22_lc.adts.dont
+1 init ret 0 sr 22050 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 7 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 22050 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+10 frame err 0 samples 2048 sr 22050 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+case stereo22_lc.adts.s16.seek
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 7 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+10 frame err 0 samples 4096 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+1 seek
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+10 frame err 0 samples 4096 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+case stereo22_lc.adts.s16.seekc
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 7 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+10 frame err 0 samples 4096 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+1 seek
+11 frame err 0 samples 4096 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+case stereo22_lc.raw.s16
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 7 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+10 frame err 0 samples 4096 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+case stereo22_lc.raw.flt
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 7 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+10 frame err 0 samples 4096 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+case stereo22_lc.raw.dm
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 7 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+10 frame err 0 samples 4096 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+case stereo22_lc.raw.dont
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 7 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 22050 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+10 frame err 0 samples 2048 sr 22050 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+case stereo22_lc.raw.s16.seek
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 7 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+10 frame err 0 samples 4096 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+1 seek
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+10 frame err 0 samples 4096 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+case stereo22_lc.raw.s16.seekc
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 7 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+10 frame err 0 samples 4096 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+1 seek
+11 frame err 0 samples 4096 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+case stereo24_lc.adts.s16
+1 init ret 0 sr 48000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 6 sf 48000 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 48000 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+10 frame err 0 samples 4096 sr 48000 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+case stereo24_lc.adts.flt
+1 init ret 0 sr 48000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 6 sf 48000 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 48000 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+10 frame err 0 samples 4096 sr 48000 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+case stereo24_lc.adts.dm
+1 init ret 0 sr 48000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 6 sf 48000 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 48000 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+10 frame err 0 samples 4096 sr 48000 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+case stereo24_lc.adts.dont
+1 init ret 0 sr 24000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 6 sf 48000 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 24000 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+10 frame err 0 samples 2048 sr 24000 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+case stereo24_lc.adts.s16.seek
+1 init ret 0 sr 48000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 6 sf 48000 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 48000 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+10 frame err 0 samples 4096 sr 48000 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+1 seek
+1 frame err 0 samples 0 sr 48000 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+10 frame err 0 samples 4096 sr 48000 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+case stereo24_lc.adts.s16.seekc
+1 init ret 0 sr 48000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 6 sf 48000 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 48000 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+10 frame err 0 samples 4096 sr 48000 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+1 seek
+11 frame err 0 samples 4096 sr 48000 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+case stereo24_lc.raw.s16
+1 init ret 0 sr 48000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 6 sf 48000 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 48000 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+10 frame err 0 samples 4096 sr 48000 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+case stereo24_lc.raw.flt
+1 init ret 0 sr 48000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 6 sf 48000 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 48000 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+10 frame err 0 samples 4096 sr 48000 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+case stereo24_lc.raw.dm
+1 init ret 0 sr 48000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 6 sf 48000 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 48000 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+10 frame err 0 samples 4096 sr 48000 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+case stereo24_lc.raw.dont
+1 init ret 0 sr 48000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 6 sf 48000 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 24000 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+10 frame err 0 samples 2048 sr 24000 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+case stereo24_lc.raw.s16.seek
+1 init ret 0 sr 48000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 6 sf 48000 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 48000 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+10 frame err 0 samples 4096 sr 48000 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+1 seek
+1 frame err 0 samples 0 sr 48000 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+10 frame err 0 samples 4096 sr 48000 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+case stereo24_lc.raw.s16.seekc
+1 init ret 0 sr 48000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 6 sf 48000 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 48000 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+10 frame err 0 samples 4096 sr 48000 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+1 seek
+11 frame err 0 samples 4096 sr 48000 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+case mono24_lc.adts.s16
+1 init ret 0 sr 48000 ch 1
+1 asc ret 0
+1 asc ot 2 sfi 6 sf 48000 cc 1 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 48000 ch 1 sbr 3 ps 0 ot 2 ht 2 pos 1
+36 frame err 0 samples 2048 sr 48000 ch 1 sbr 3 ps 0 ot 2 ht 2 pos 1
+case mono24_lc.adts.flt
+1 init ret 0 sr 48000 ch 1
+1 asc ret 0
+1 asc ot 2 sfi 6 sf 48000 cc 1 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 48000 ch 1 sbr 3 ps 0 ot 2 ht 2 pos 1
+36 frame err 0 samples 2048 sr 48000 ch 1 sbr 3 ps 0 ot 2 ht 2 pos 1
+case mono24_lc.adts.dm
+1 init ret 0 sr 48000 ch 1
+1 asc ret 0
+1 asc ot 2 sfi 6 sf 48000 cc 1 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 48000 ch 1 sbr 3 ps 0 ot 2 ht 2 pos 1
+36 frame err 0 samples 2048 sr 48000 ch 1 sbr 3 ps 0 ot 2 ht 2 pos 1
+case mono24_lc.adts.dont
+1 init ret 0 sr 24000 ch 1
+1 asc ret 0
+1 asc ot 2 sfi 6 sf 48000 cc 1 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 24000 ch 1 sbr 0 ps 0 ot 2 ht 2 pos 1
+36 frame err 0 samples 1024 sr 24000 ch 1 sbr 0 ps 0 ot 2 ht 2 pos 1
+case mono24_lc.adts.s16.seek
+1 init ret 0 sr 48000 ch 1
+1 asc ret 0
+1 asc ot 2 sfi 6 sf 48000 cc 1 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 48000 ch 1 sbr 3 ps 0 ot 2 ht 2 pos 1
+36 frame err 0 samples 2048 sr 48000 ch 1 sbr 3 ps 0 ot 2 ht 2 pos 1
+1 seek
+1 frame err 0 samples 0 sr 48000 ch 1 sbr 3 ps 0 ot 2 ht 2 pos 1
+36 frame err 0 samples 2048 sr 48000 ch 1 sbr 3 ps 0 ot 2 ht 2 pos 1
+case mono24_lc.adts.s16.seekc
+1 init ret 0 sr 48000 ch 1
+1 asc ret 0
+1 asc ot 2 sfi 6 sf 48000 cc 1 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 48000 ch 1 sbr 3 ps 0 ot 2 ht 2 pos 1
+36 frame err 0 samples 2048 sr 48000 ch 1 sbr 3 ps 0 ot 2 ht 2 pos 1
+1 seek
+37 frame err 0 samples 2048 sr 48000 ch 1 sbr 3 ps 0 ot 2 ht 2 pos 1
+case mono24_lc.raw.s16
+1 init ret 0 sr 48000 ch 1
+1 asc ret 0
+1 asc ot 2 sfi 6 sf 48000 cc 1 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 48000 ch 1 sbr 3 ps 0 ot 2 ht 0 pos 1
+36 frame err 0 samples 2048 sr 48000 ch 1 sbr 3 ps 0 ot 2 ht 0 pos 1
+case mono24_lc.raw.flt
+1 init ret 0 sr 48000 ch 1
+1 asc ret 0
+1 asc ot 2 sfi 6 sf 48000 cc 1 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 48000 ch 1 sbr 3 ps 0 ot 2 ht 0 pos 1
+36 frame err 0 samples 2048 sr 48000 ch 1 sbr 3 ps 0 ot 2 ht 0 pos 1
+case mono24_lc.raw.dm
+1 init ret 0 sr 48000 ch 1
+1 asc ret 0
+1 asc ot 2 sfi 6 sf 48000 cc 1 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 48000 ch 1 sbr 3 ps 0 ot 2 ht 0 pos 1
+36 frame err 0 samples 2048 sr 48000 ch 1 sbr 3 ps 0 ot 2 ht 0 pos 1
+case mono24_lc.raw.dont
+1 init ret 0 sr 48000 ch 1
+1 asc ret 0
+1 asc ot 2 sfi 6 sf 48000 cc 1 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 24000 ch 1 sbr 0 ps 0 ot 2 ht 0 pos 1
+36 frame err 0 samples 1024 sr 24000 ch 1 sbr 0 ps 0 ot 2 ht 0 pos 1
+case mono24_lc.raw.s16.seek
+1 init ret 0 sr 48000 ch 1
+1 asc ret 0
+1 asc ot 2 sfi 6 sf 48000 cc 1 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 48000 ch 1 sbr 3 ps 0 ot 2 ht 0 pos 1
+36 frame err 0 samples 2048 sr 48000 ch 1 sbr 3 ps 0 ot 2 ht 0 pos 1
+1 seek
+1 frame err 0 samples 0 sr 48000 ch 1 sbr 3 ps 0 ot 2 ht 0 pos 1
+36 frame err 0 samples 2048 sr 48000 ch 1 sbr 3 ps 0 ot 2 ht 0 pos 1
+case mono24_lc.raw.s16.seekc
+1 init ret 0 sr 48000 ch 1
+1 asc ret 0
+1 asc ot 2 sfi 6 sf 48000 cc 1 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 48000 ch 1 sbr 3 ps 0 ot 2 ht 0 pos 1
+36 frame err 0 samples 2048 sr 48000 ch 1 sbr 3 ps 0 ot 2 ht 0 pos 1
+1 seek
+37 frame err 0 samples 2048 sr 48000 ch 1 sbr 3 ps 0 ot 2 ht 0 pos 1
+case stereo32_he.adts.s16
+1 init ret 0 sr 32000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 8 sf 32000 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 32000 ch 2 sbr 1 ps 0 ot 5 ht 2 pos 2 3
+25 frame err 0 samples 4096 sr 32000 ch 2 sbr 1 ps 0 ot 5 ht 2 pos 2 3
+case stereo32_he.adts.flt
+1 init ret 0 sr 32000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 8 sf 32000 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 32000 ch 2 sbr 1 ps 0 ot 5 ht 2 pos 2 3
+25 frame err 0 samples 4096 sr 32000 ch 2 sbr 1 ps 0 ot 5 ht 2 pos 2 3
+case stereo32_he.adts.dm
+1 init ret 0 sr 32000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 8 sf 32000 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 32000 ch 2 sbr 1 ps 0 ot 5 ht 2 pos 2 3
+25 frame err 0 samples 4096 sr 32000 ch 2 sbr 1 ps 0 ot 5 ht 2 pos 2 3
+case stereo32_he.adts.dont
+1 init ret 0 sr 16000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 8 sf 32000 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 32000 ch 2 sbr 1 ps 0 ot 5 ht 2 pos 2 3
+25 frame err 0 samples 4096 sr 32000 ch 2 sbr 1 ps 0 ot 5 ht 2 pos 2 3
+case stereo32_he.adts.s16.seek
+1 init ret 0 sr 32000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 8 sf 32000 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 32000 ch 2 sbr 1 ps 0 ot 5 ht 2 pos 2 3
+25 frame err 0 samples 4096 sr 32000 ch 2 sbr 1 ps 0 ot 5 ht 2 pos 2 3
+1 seek
+1 frame err 0 samples 0 sr 32000 ch 2 sbr 1 ps 0 ot 5 ht 2 pos 2 3
+25 frame err 0 samples 4096 sr 32000 ch 2 sbr 1 ps 0 ot 5 ht 2 pos 2 3
+case stereo32_he.adts.s16.seekc
+1 init ret 0 sr 32000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 8 sf 32000 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 32000 ch 2 sbr 1 ps 0 ot 5 ht 2 pos 2 3
+25 frame err 0 samples 4096 sr 32000 ch 2 sbr 1 ps 0 ot 5 ht 2 pos 2 3
+1 seek
+26 frame err 0 samples 4096 sr 32000 ch 2 sbr 1 ps 0 ot 5 ht 2 pos 2 3
+case stereo32_he.raw.s16
+1 init ret 0 sr 32000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 8 sf 32000 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 32000 ch 2 sbr 1 ps 0 ot 5 ht 0 pos 2 3
+25 frame err 0 samples 4096 sr 32000 ch 2 sbr 1 ps 0 ot 5 ht 0 pos 2 3
+case stereo32_he.raw.flt
+1 init ret 0 sr 32000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 8 sf 32000 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 32000 ch 2 sbr 1 ps 0 ot 5 ht 0 pos 2 3
+25 frame err 0 samples 4096 sr 32000 ch 2 sbr 1 ps 0 ot 5 ht 0 pos 2 3
+case stereo32_he.raw.dm
+1 init ret 0 sr 32000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 8 sf 32000 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 32000 ch 2 sbr 1 ps 0 ot 5 ht 0 pos 2 3
+25 frame err 0 samples 4096 sr 32000 ch 2 sbr 1 ps 0 ot 5 ht 0 pos 2 3
+case stereo32_he.raw.dont
+1 init ret 0 sr 32000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 8 sf 32000 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 32000 ch 2 sbr 1 ps 0 ot 5 ht 0 pos 2 3
+25 frame err 0 samples 4096 sr 32000 ch 2 sbr 1 ps 0 ot 5 ht 0 pos 2 3
+case stereo32_he.raw.s16.seek
+1 init ret 0 sr 32000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 8 sf 32000 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 32000 ch 2 sbr 1 ps 0 ot 5 ht 0 pos 2 3
+25 frame err 0 samples 4096 sr 32000 ch 2 sbr 1 ps 0 ot 5 ht 0 pos 2 3
+1 seek
+1 frame err 0 samples 0 sr 32000 ch 2 sbr 1 ps 0 ot 5 ht 0 pos 2 3
+25 frame err 0 samples 4096 sr 32000 ch 2 sbr 1 ps 0 ot 5 ht 0 pos 2 3
+case stereo32_he.raw.s16.seekc
+1 init ret 0 sr 32000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 8 sf 32000 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 32000 ch 2 sbr 1 ps 0 ot 5 ht 0 pos 2 3
+25 frame err 0 samples 4096 sr 32000 ch 2 sbr 1 ps 0 ot 5 ht 0 pos 2 3
+1 seek
+26 frame err 0 samples 4096 sr 32000 ch 2 sbr 1 ps 0 ot 5 ht 0 pos 2 3
+case stereo44_lc.adts.s16
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 4 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+65 frame err 0 samples 2048 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+case stereo44_lc.adts.flt
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 4 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+65 frame err 0 samples 2048 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+case stereo44_lc.adts.dm
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 4 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+65 frame err 0 samples 2048 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+case stereo44_lc.adts.dont
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 4 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+65 frame err 0 samples 2048 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+case stereo44_lc.adts.s16.seek
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 4 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+65 frame err 0 samples 2048 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+1 seek
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+65 frame err 0 samples 2048 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+case stereo44_lc.adts.s16.seekc
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 4 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+65 frame err 0 samples 2048 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+1 seek
+66 frame err 0 samples 2048 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+case stereo44_lc.raw.s16
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 4 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+65 frame err 0 samples 2048 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+case stereo44_lc.raw.flt
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 4 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+65 frame err 0 samples 2048 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+case stereo44_lc.raw.dm
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 4 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+65 frame err 0 samples 2048 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+case stereo44_lc.raw.dont
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 4 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+65 frame err 0 samples 2048 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+case stereo44_lc.raw.s16.seek
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 4 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+65 frame err 0 samples 2048 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+1 seek
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+65 frame err 0 samples 2048 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+case stereo44_lc.raw.s16.seekc
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 4 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+65 frame err 0 samples 2048 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+1 seek
+66 frame err 0 samples 2048 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+case stereo48_lc.adts.s16
+1 init ret 0 sr 48000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 3 sf 48000 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 48000 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+10 frame err 0 samples 2048 sr 48000 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+case stereo48_lc.adts.flt
+1 init ret 0 sr 48000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 3 sf 48000 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 48000 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+10 frame err 0 samples 2048 sr 48000 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+case stereo48_lc.adts.dm
+1 init ret 0 sr 48000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 3 sf 48000 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 48000 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+10 frame err 0 samples 2048 sr 48000 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+case stereo48_lc.adts.dont
+1 init ret 0 sr 48000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 3 sf 48000 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 48000 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+10 frame err 0 samples 2048 sr 48000 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+case stereo48_lc.adts.s16.seek
+1 init ret 0 sr 48000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 3 sf 48000 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 48000 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+10 frame err 0 samples 2048 sr 48000 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+1 seek
+1 frame err 0 samples 0 sr 48000 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+10 frame err 0 samples 2048 sr 48000 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+case stereo48_lc.adts.s16.seekc
+1 init ret 0 sr 48000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 3 sf 48000 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 48000 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+10 frame err 0 samples 2048 sr 48000 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+1 seek
+11 frame err 0 samples 2048 sr 48000 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+case stereo48_lc.raw.s16
+1 init ret 0 sr 48000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 3 sf 48000 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 48000 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+10 frame err 0 samples 2048 sr 48000 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+case stereo48_lc.raw.flt
+1 init ret 0 sr 48000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 3 sf 48000 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 48000 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+10 frame err 0 samples 2048 sr 48000 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+case stereo48_lc.raw.dm
+1 init ret 0 sr 48000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 3 sf 48000 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 48000 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+10 frame err 0 samples 2048 sr 48000 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+case stereo48_lc.raw.dont
+1 init ret 0 sr 48000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 3 sf 48000 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 48000 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+10 frame err 0 samples 2048 sr 48000 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+case stereo48_lc.raw.s16.seek
+1 init ret 0 sr 48000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 3 sf 48000 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 48000 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+10 frame err 0 samples 2048 sr 48000 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+1 seek
+1 frame err 0 samples 0 sr 48000 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+10 frame err 0 samples 2048 sr 48000 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+case stereo48_lc.raw.s16.seekc
+1 init ret 0 sr 48000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 3 sf 48000 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 48000 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+10 frame err 0 samples 2048 sr 48000 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+1 seek
+11 frame err 0 samples 2048 sr 48000 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+case surround51_lc.adts.s16
+1 init ret 0 sr 44100 ch 6
+1 asc ret 0
+1 asc ot 2 sfi 4 sf 44100 cc 6 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 44100 ch 6 sbr 0 ps 0 ot 2 ht 2 pos 1 2 3 6 7 9
+65 frame err 0 samples 6144 sr 44100 ch 6 sbr 0 ps 0 ot 2 ht 2 pos 1 2 3 6 7 9
+case surround51_lc.adts.flt
+1 init ret 0 sr 44100 ch 6
+1 asc ret 0
+1 asc ot 2 sfi 4 sf 44100 cc 6 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 44100 ch 6 sbr 0 ps 0 ot 2 ht 2 pos 1 2 3 6 7 9
+65 frame err 0 samples 6144 sr 44100 ch 6 sbr 0 ps 0 ot 2 ht 2 pos 1 2 3 6 7 9
+case surround51_lc.adts.dm
+1 init ret 0 sr 44100 ch 6
+1 asc ret 0
+1 asc ot 2 sfi 4 sf 44100 cc 6 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+65 frame err 0 samples 2048 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+case surround51_lc.adts.dont
+1 init ret 0 sr 44100 ch 6
+1 asc ret 0
+1 asc ot 2 sfi 4 sf 44100 cc 6 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 44100 ch 6 sbr 0 ps 0 ot 2 ht 2 pos 1 2 3 6 7 9
+65 frame err 0 samples 6144 sr 44100 ch 6 sbr 0 ps 0 ot 2 ht 2 pos 1 2 3 6 7 9
+case surround51_lc.adts.s16.seek
+1 init ret 0 sr 44100 ch 6
+1 asc ret 0
+1 asc ot 2 sfi 4 sf 44100 cc 6 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 44100 ch 6 sbr 0 ps 0 ot 2 ht 2 pos 1 2 3 6 7 9
+65 frame err 0 samples 6144 sr 44100 ch 6 sbr 0 ps 0 ot 2 ht 2 pos 1 2 3 6 7 9
+1 seek
+1 frame err 0 samples 0 sr 44100 ch 6 sbr 0 ps 0 ot 2 ht 2 pos 1 2 3 6 7 9
+65 frame err 0 samples 6144 sr 44100 ch 6 sbr 0 ps 0 ot 2 ht 2 pos 1 2 3 6 7 9
+case surround51_lc.adts.s16.seekc
+1 init ret 0 sr 44100 ch 6
+1 asc ret 0
+1 asc ot 2 sfi 4 sf 44100 cc 6 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 44100 ch 6 sbr 0 ps 0 ot 2 ht 2 pos 1 2 3 6 7 9
+65 frame err 0 samples 6144 sr 44100 ch 6 sbr 0 ps 0 ot 2 ht 2 pos 1 2 3 6 7 9
+1 seek
+66 frame err 0 samples 6144 sr 44100 ch 6 sbr 0 ps 0 ot 2 ht 2 pos 1 2 3 6 7 9
+case surround51_lc.raw.s16
+1 init ret 0 sr 44100 ch 6
+1 asc ret 0
+1 asc ot 2 sfi 4 sf 44100 cc 6 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 44100 ch 6 sbr 0 ps 0 ot 2 ht 0 pos 1 2 3 6 7 9
+65 frame err 0 samples 6144 sr 44100 ch 6 sbr 0 ps 0 ot 2 ht 0 pos 1 2 3 6 7 9
+case surround51_lc.raw.flt
+1 init ret 0 sr 44100 ch 6
+1 asc ret 0
+1 asc ot 2 sfi 4 sf 44100 cc 6 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 44100 ch 6 sbr 0 ps 0 ot 2 ht 0 pos 1 2 3 6 7 9
+65 frame err 0 samples 6144 sr 44100 ch 6 sbr 0 ps 0 ot 2 ht 0 pos 1 2 3 6 7 9
+case surround51_lc.raw.dm
+1 init ret 0 sr 44100 ch 6
+1 asc ret 0
+1 asc ot 2 sfi 4 sf 44100 cc 6 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+65 frame err 0 samples 2048 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+case surround51_lc.raw.dont
+1 init ret 0 sr 44100 ch 6
+1 asc ret 0
+1 asc ot 2 sfi 4 sf 44100 cc 6 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 44100 ch 6 sbr 0 ps 0 ot 2 ht 0 pos 1 2 3 6 7 9
+65 frame err 0 samples 6144 sr 44100 ch 6 sbr 0 ps 0 ot 2 ht 0 pos 1 2 3 6 7 9
+case surround51_lc.raw.s16.seek
+1 init ret 0 sr 44100 ch 6
+1 asc ret 0
+1 asc ot 2 sfi 4 sf 44100 cc 6 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 44100 ch 6 sbr 0 ps 0 ot 2 ht 0 pos 1 2 3 6 7 9
+65 frame err 0 samples 6144 sr 44100 ch 6 sbr 0 ps 0 ot 2 ht 0 pos 1 2 3 6 7 9
+1 seek
+1 frame err 0 samples 0 sr 44100 ch 6 sbr 0 ps 0 ot 2 ht 0 pos 1 2 3 6 7 9
+65 frame err 0 samples 6144 sr 44100 ch 6 sbr 0 ps 0 ot 2 ht 0 pos 1 2 3 6 7 9
+case surround51_lc.raw.s16.seekc
+1 init ret 0 sr 44100 ch 6
+1 asc ret 0
+1 asc ot 2 sfi 4 sf 44100 cc 6 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 44100 ch 6 sbr 0 ps 0 ot 2 ht 0 pos 1 2 3 6 7 9
+65 frame err 0 samples 6144 sr 44100 ch 6 sbr 0 ps 0 ot 2 ht 0 pos 1 2 3 6 7 9
+1 seek
+66 frame err 0 samples 6144 sr 44100 ch 6 sbr 0 ps 0 ot 2 ht 0 pos 1 2 3 6 7 9
+case surround71_lc.adts.s16
+1 init ret 0 sr 48000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 3 sf 48000 cc 7 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 48000 ch 8 sbr 0 ps 0 ot 2 ht 2 pos 2 3 0 0 0 0 0 0
+10 frame err 0 samples 8192 sr 48000 ch 8 sbr 0 ps 0 ot 2 ht 2 pos 2 3 0 0 0 0 0 0
+case surround71_lc.adts.flt
+1 init ret 0 sr 48000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 3 sf 48000 cc 7 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 48000 ch 8 sbr 0 ps 0 ot 2 ht 2 pos 2 3 0 0 0 0 0 0
+10 frame err 0 samples 8192 sr 48000 ch 8 sbr 0 ps 0 ot 2 ht 2 pos 2 3 0 0 0 0 0 0
+case surround71_lc.adts.dm
+1 init ret 0 sr 48000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 3 sf 48000 cc 7 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 48000 ch 8 sbr 0 ps 0 ot 2 ht 2 pos 2 3 0 0 0 0 0 0
+10 frame err 0 samples 8192 sr 48000 ch 8 sbr 0 ps 0 ot 2 ht 2 pos 2 3 0 0 0 0 0 0
+case surround71_lc.adts.dont
+1 init ret 0 sr 48000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 3 sf 48000 cc 7 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 48000 ch 8 sbr 0 ps 0 ot 2 ht 2 pos 2 3 0 0 0 0 0 0
+10 frame err 0 samples 8192 sr 48000 ch 8 sbr 0 ps 0 ot 2 ht 2 pos 2 3 0 0 0 0 0 0
+case surround71_lc.adts.s16.seek
+1 init ret 0 sr 48000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 3 sf 48000 cc 7 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 48000 ch 8 sbr 0 ps 0 ot 2 ht 2 pos 2 3 0 0 0 0 0 0
+10 frame err 0 samples 8192 sr 48000 ch 8 sbr 0 ps 0 ot 2 ht 2 pos 2 3 0 0 0 0 0 0
+1 seek
+1 frame err 0 samples 0 sr 48000 ch 8 sbr 0 ps 0 ot 2 ht 2 pos 2 3 0 0 0 0 0 0
+10 frame err 0 samples 8192 sr 48000 ch 8 sbr 0 ps 0 ot 2 ht 2 pos 2 3 0 0 0 0 0 0
+case surround71_lc.adts.s16.seekc
+1 init ret 0 sr 48000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 3 sf 48000 cc 7 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 48000 ch 8 sbr 0 ps 0 ot 2 ht 2 pos 2 3 0 0 0 0 0 0
+10 frame err 0 samples 8192 sr 48000 ch 8 sbr 0 ps 0 ot 2 ht 2 pos 2 3 0 0 0 0 0 0
+1 seek
+11 frame err 0 samples 8192 sr 48000 ch 8 sbr 0 ps 0 ot 2 ht 2 pos 2 3 0 0 0 0 0 0
+case surround71_lc.raw.s16
+1 init ret 0 sr 48000 ch 7
+1 asc ret 0
+1 asc ot 2 sfi 3 sf 48000 cc 7 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 48000 ch 8 sbr 0 ps 0 ot 2 ht 0 pos 1 2 3 4 5 6 7 9
+10 frame err 0 samples 8192 sr 48000 ch 8 sbr 0 ps 0 ot 2 ht 0 pos 1 2 3 4 5 6 7 9
+case surround71_lc.raw.flt
+1 init ret 0 sr 48000 ch 7
+1 asc ret 0
+1 asc ot 2 sfi 3 sf 48000 cc 7 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 48000 ch 8 sbr 0 ps 0 ot 2 ht 0 pos 1 2 3 4 5 6 7 9
+10 frame err 0 samples 8192 sr 48000 ch 8 sbr 0 ps 0 ot 2 ht 0 pos 1 2 3 4 5 6 7 9
+case surround71_lc.raw.dm
+1 init ret 0 sr 48000 ch 7
+1 asc ret 0
+1 asc ot 2 sfi 3 sf 48000 cc 7 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 48000 ch 8 sbr 0 ps 0 ot 2 ht 0 pos 1 2 3 4 5 6 7 9
+10 frame err 0 samples 8192 sr 48000 ch 8 sbr 0 ps 0 ot 2 ht 0 pos 1 2 3 4 5 6 7 9
+case surround71_lc.raw.dont
+1 init ret 0 sr 48000 ch 7
+1 asc ret 0
+1 asc ot 2 sfi 3 sf 48000 cc 7 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 48000 ch 8 sbr 0 ps 0 ot 2 ht 0 pos 1 2 3 4 5 6 7 9
+10 frame err 0 samples 8192 sr 48000 ch 8 sbr 0 ps 0 ot 2 ht 0 pos 1 2 3 4 5 6 7 9
+case surround71_lc.raw.s16.seek
+1 init ret 0 sr 48000 ch 7
+1 asc ret 0
+1 asc ot 2 sfi 3 sf 48000 cc 7 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 48000 ch 8 sbr 0 ps 0 ot 2 ht 0 pos 1 2 3 4 5 6 7 9
+10 frame err 0 samples 8192 sr 48000 ch 8 sbr 0 ps 0 ot 2 ht 0 pos 1 2 3 4 5 6 7 9
+1 seek
+1 frame err 0 samples 0 sr 48000 ch 8 sbr 0 ps 0 ot 2 ht 0 pos 1 2 3 4 5 6 7 9
+10 frame err 0 samples 8192 sr 48000 ch 8 sbr 0 ps 0 ot 2 ht 0 pos 1 2 3 4 5 6 7 9
+case surround71_lc.raw.s16.seekc
+1 init ret 0 sr 48000 ch 7
+1 asc ret 0
+1 asc ot 2 sfi 3 sf 48000 cc 7 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 48000 ch 8 sbr 0 ps 0 ot 2 ht 0 pos 1 2 3 4 5 6 7 9
+10 frame err 0 samples 8192 sr 48000 ch 8 sbr 0 ps 0 ot 2 ht 0 pos 1 2 3 4 5 6 7 9
+1 seek
+11 frame err 0 samples 8192 sr 48000 ch 8 sbr 0 ps 0 ot 2 ht 0 pos 1 2 3 4 5 6 7 9
+case drc_ref23.adts.s16
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 4 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+66 frame err 0 samples 2048 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+case drc_ref23.adts.flt
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 4 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+66 frame err 0 samples 2048 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+case drc_ref23.adts.dm
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 4 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+66 frame err 0 samples 2048 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+case drc_ref23.adts.dont
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 4 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+66 frame err 0 samples 2048 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+case drc_ref23.adts.s16.seek
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 4 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+66 frame err 0 samples 2048 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+1 seek
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+66 frame err 0 samples 2048 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+case drc_ref23.adts.s16.seekc
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 4 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+66 frame err 0 samples 2048 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+1 seek
+67 frame err 0 samples 2048 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+case drc_ref23.raw.s16
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 4 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+66 frame err 0 samples 2048 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+case drc_ref23.raw.flt
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 4 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+66 frame err 0 samples 2048 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+case drc_ref23.raw.dm
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 4 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+66 frame err 0 samples 2048 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+case drc_ref23.raw.dont
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 4 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+66 frame err 0 samples 2048 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+case drc_ref23.raw.s16.seek
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 4 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+66 frame err 0 samples 2048 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+1 seek
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+66 frame err 0 samples 2048 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+case drc_ref23.raw.s16.seekc
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 4 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+66 frame err 0 samples 2048 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+1 seek
+67 frame err 0 samples 2048 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+case drc_noref.adts.s16
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 4 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+66 frame err 0 samples 2048 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+case drc_noref.adts.flt
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 4 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+66 frame err 0 samples 2048 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+case drc_noref.adts.dm
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 4 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+66 frame err 0 samples 2048 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+case drc_noref.adts.dont
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 4 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+66 frame err 0 samples 2048 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+case drc_noref.adts.s16.seek
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 4 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+66 frame err 0 samples 2048 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+1 seek
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+66 frame err 0 samples 2048 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+case drc_noref.adts.s16.seekc
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 4 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+66 frame err 0 samples 2048 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+1 seek
+67 frame err 0 samples 2048 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+case drc_noref.raw.s16
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 4 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+66 frame err 0 samples 2048 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+case drc_noref.raw.flt
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 4 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+66 frame err 0 samples 2048 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+case drc_noref.raw.dm
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 4 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+66 frame err 0 samples 2048 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+case drc_noref.raw.dont
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 4 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+66 frame err 0 samples 2048 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+case drc_noref.raw.s16.seek
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 4 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+66 frame err 0 samples 2048 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+1 seek
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+66 frame err 0 samples 2048 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+case drc_noref.raw.s16.seekc
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 4 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+66 frame err 0 samples 2048 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+1 seek
+67 frame err 0 samples 2048 sr 44100 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+case lc8k_mono.adts.s16
+1 init ret 0 sr 16000 ch 1
+1 asc ret 0
+1 asc ot 2 sfi 11 sf 16000 cc 1 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 16000 ch 1 sbr 3 ps 0 ot 2 ht 2 pos 1
+10 frame err 0 samples 2048 sr 16000 ch 1 sbr 3 ps 0 ot 2 ht 2 pos 1
+case lc8k_mono.adts.flt
+1 init ret 0 sr 16000 ch 1
+1 asc ret 0
+1 asc ot 2 sfi 11 sf 16000 cc 1 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 16000 ch 1 sbr 3 ps 0 ot 2 ht 2 pos 1
+10 frame err 0 samples 2048 sr 16000 ch 1 sbr 3 ps 0 ot 2 ht 2 pos 1
+case lc8k_mono.adts.dm
+1 init ret 0 sr 16000 ch 1
+1 asc ret 0
+1 asc ot 2 sfi 11 sf 16000 cc 1 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 16000 ch 1 sbr 3 ps 0 ot 2 ht 2 pos 1
+10 frame err 0 samples 2048 sr 16000 ch 1 sbr 3 ps 0 ot 2 ht 2 pos 1
+case lc8k_mono.adts.dont
+1 init ret 0 sr 8000 ch 1
+1 asc ret 0
+1 asc ot 2 sfi 11 sf 16000 cc 1 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 8000 ch 1 sbr 0 ps 0 ot 2 ht 2 pos 1
+10 frame err 0 samples 1024 sr 8000 ch 1 sbr 0 ps 0 ot 2 ht 2 pos 1
+case lc8k_mono.adts.s16.seek
+1 init ret 0 sr 16000 ch 1
+1 asc ret 0
+1 asc ot 2 sfi 11 sf 16000 cc 1 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 16000 ch 1 sbr 3 ps 0 ot 2 ht 2 pos 1
+10 frame err 0 samples 2048 sr 16000 ch 1 sbr 3 ps 0 ot 2 ht 2 pos 1
+1 seek
+1 frame err 0 samples 0 sr 16000 ch 1 sbr 3 ps 0 ot 2 ht 2 pos 1
+10 frame err 0 samples 2048 sr 16000 ch 1 sbr 3 ps 0 ot 2 ht 2 pos 1
+case lc8k_mono.adts.s16.seekc
+1 init ret 0 sr 16000 ch 1
+1 asc ret 0
+1 asc ot 2 sfi 11 sf 16000 cc 1 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 16000 ch 1 sbr 3 ps 0 ot 2 ht 2 pos 1
+10 frame err 0 samples 2048 sr 16000 ch 1 sbr 3 ps 0 ot 2 ht 2 pos 1
+1 seek
+11 frame err 0 samples 2048 sr 16000 ch 1 sbr 3 ps 0 ot 2 ht 2 pos 1
+case lc8k_mono.raw.s16
+1 init ret 0 sr 16000 ch 1
+1 asc ret 0
+1 asc ot 2 sfi 11 sf 16000 cc 1 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 16000 ch 1 sbr 3 ps 0 ot 2 ht 0 pos 1
+10 frame err 0 samples 2048 sr 16000 ch 1 sbr 3 ps 0 ot 2 ht 0 pos 1
+case lc8k_mono.raw.flt
+1 init ret 0 sr 16000 ch 1
+1 asc ret 0
+1 asc ot 2 sfi 11 sf 16000 cc 1 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 16000 ch 1 sbr 3 ps 0 ot 2 ht 0 pos 1
+10 frame err 0 samples 2048 sr 16000 ch 1 sbr 3 ps 0 ot 2 ht 0 pos 1
+case lc8k_mono.raw.dm
+1 init ret 0 sr 16000 ch 1
+1 asc ret 0
+1 asc ot 2 sfi 11 sf 16000 cc 1 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 16000 ch 1 sbr 3 ps 0 ot 2 ht 0 pos 1
+10 frame err 0 samples 2048 sr 16000 ch 1 sbr 3 ps 0 ot 2 ht 0 pos 1
+case lc8k_mono.raw.dont
+1 init ret 0 sr 16000 ch 1
+1 asc ret 0
+1 asc ot 2 sfi 11 sf 16000 cc 1 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 8000 ch 1 sbr 0 ps 0 ot 2 ht 0 pos 1
+10 frame err 0 samples 1024 sr 8000 ch 1 sbr 0 ps 0 ot 2 ht 0 pos 1
+case lc8k_mono.raw.s16.seek
+1 init ret 0 sr 16000 ch 1
+1 asc ret 0
+1 asc ot 2 sfi 11 sf 16000 cc 1 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 16000 ch 1 sbr 3 ps 0 ot 2 ht 0 pos 1
+10 frame err 0 samples 2048 sr 16000 ch 1 sbr 3 ps 0 ot 2 ht 0 pos 1
+1 seek
+1 frame err 0 samples 0 sr 16000 ch 1 sbr 3 ps 0 ot 2 ht 0 pos 1
+10 frame err 0 samples 2048 sr 16000 ch 1 sbr 3 ps 0 ot 2 ht 0 pos 1
+case lc8k_mono.raw.s16.seekc
+1 init ret 0 sr 16000 ch 1
+1 asc ret 0
+1 asc ot 2 sfi 11 sf 16000 cc 1 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 16000 ch 1 sbr 3 ps 0 ot 2 ht 0 pos 1
+10 frame err 0 samples 2048 sr 16000 ch 1 sbr 3 ps 0 ot 2 ht 0 pos 1
+1 seek
+11 frame err 0 samples 2048 sr 16000 ch 1 sbr 3 ps 0 ot 2 ht 0 pos 1
+case lc11k_st.adts.s16
+1 init ret 0 sr 22050 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 10 sf 22050 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 22050 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+13 frame err 0 samples 4096 sr 22050 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+case lc11k_st.adts.flt
+1 init ret 0 sr 22050 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 10 sf 22050 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 22050 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+13 frame err 0 samples 4096 sr 22050 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+case lc11k_st.adts.dm
+1 init ret 0 sr 22050 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 10 sf 22050 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 22050 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+13 frame err 0 samples 4096 sr 22050 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+case lc11k_st.adts.dont
+1 init ret 0 sr 11025 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 10 sf 22050 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 11025 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+13 frame err 0 samples 2048 sr 11025 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+case lc11k_st.adts.s16.seek
+1 init ret 0 sr 22050 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 10 sf 22050 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 22050 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+13 frame err 0 samples 4096 sr 22050 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+1 seek
+1 frame err 0 samples 0 sr 22050 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+13 frame err 0 samples 4096 sr 22050 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+case lc11k_st.adts.s16.seekc
+1 init ret 0 sr 22050 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 10 sf 22050 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 22050 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+13 frame err 0 samples 4096 sr 22050 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+1 seek
+14 frame err 0 samples 4096 sr 22050 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+case lc11k_st.raw.s16
+1 init ret 0 sr 22050 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 10 sf 22050 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 22050 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+13 frame err 0 samples 4096 sr 22050 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+case lc11k_st.raw.flt
+1 init ret 0 sr 22050 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 10 sf 22050 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 22050 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+13 frame err 0 samples 4096 sr 22050 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+case lc11k_st.raw.dm
+1 init ret 0 sr 22050 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 10 sf 22050 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 22050 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+13 frame err 0 samples 4096 sr 22050 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+case lc11k_st.raw.dont
+1 init ret 0 sr 22050 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 10 sf 22050 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 11025 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+13 frame err 0 samples 2048 sr 11025 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+case lc11k_st.raw.s16.seek
+1 init ret 0 sr 22050 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 10 sf 22050 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 22050 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+13 frame err 0 samples 4096 sr 22050 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+1 seek
+1 frame err 0 samples 0 sr 22050 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+13 frame err 0 samples 4096 sr 22050 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+case lc11k_st.raw.s16.seekc
+1 init ret 0 sr 22050 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 10 sf 22050 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 22050 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+13 frame err 0 samples 4096 sr 22050 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+1 seek
+14 frame err 0 samples 4096 sr 22050 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+case lc16k_st.adts.s16
+1 init ret 0 sr 32000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 8 sf 32000 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 32000 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+19 frame err 0 samples 4096 sr 32000 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+case lc16k_st.adts.flt
+1 init ret 0 sr 32000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 8 sf 32000 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 32000 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+19 frame err 0 samples 4096 sr 32000 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+case lc16k_st.adts.dm
+1 init ret 0 sr 32000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 8 sf 32000 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 32000 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+19 frame err 0 samples 4096 sr 32000 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+case lc16k_st.adts.dont
+1 init ret 0 sr 16000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 8 sf 32000 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 16000 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+19 frame err 0 samples 2048 sr 16000 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+case lc16k_st.adts.s16.seek
+1 init ret 0 sr 32000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 8 sf 32000 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 32000 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+19 frame err 0 samples 4096 sr 32000 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+1 seek
+1 frame err 0 samples 0 sr 32000 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+19 frame err 0 samples 4096 sr 32000 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+case lc16k_st.adts.s16.seekc
+1 init ret 0 sr 32000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 8 sf 32000 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 32000 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+19 frame err 0 samples 4096 sr 32000 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+1 seek
+20 frame err 0 samples 4096 sr 32000 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+case lc16k_st.raw.s16
+1 init ret 0 sr 32000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 8 sf 32000 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 32000 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+19 frame err 0 samples 4096 sr 32000 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+case lc16k_st.raw.flt
+1 init ret 0 sr 32000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 8 sf 32000 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 32000 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+19 frame err 0 samples 4096 sr 32000 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+case lc16k_st.raw.dm
+1 init ret 0 sr 32000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 8 sf 32000 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 32000 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+19 frame err 0 samples 4096 sr 32000 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+case lc16k_st.raw.dont
+1 init ret 0 sr 32000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 8 sf 32000 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 16000 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+19 frame err 0 samples 2048 sr 16000 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+case lc16k_st.raw.s16.seek
+1 init ret 0 sr 32000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 8 sf 32000 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 32000 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+19 frame err 0 samples 4096 sr 32000 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+1 seek
+1 frame err 0 samples 0 sr 32000 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+19 frame err 0 samples 4096 sr 32000 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+case lc16k_st.raw.s16.seekc
+1 init ret 0 sr 32000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 8 sf 32000 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 32000 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+19 frame err 0 samples 4096 sr 32000 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+1 seek
+20 frame err 0 samples 4096 sr 32000 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+case lc22k_st.adts.s16
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 7 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+18 frame err 0 samples 4096 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+case lc22k_st.adts.flt
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 7 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+18 frame err 0 samples 4096 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+case lc22k_st.adts.dm
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 7 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+18 frame err 0 samples 4096 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+case lc22k_st.adts.dont
+1 init ret 0 sr 22050 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 7 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 22050 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+18 frame err 0 samples 2048 sr 22050 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+case lc22k_st.adts.s16.seek
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 7 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+18 frame err 0 samples 4096 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+1 seek
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+18 frame err 0 samples 4096 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+case lc22k_st.adts.s16.seekc
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 7 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+18 frame err 0 samples 4096 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+1 seek
+19 frame err 0 samples 4096 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+case lc22k_st.raw.s16
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 7 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+18 frame err 0 samples 4096 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+case lc22k_st.raw.flt
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 7 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+18 frame err 0 samples 4096 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+case lc22k_st.raw.dm
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 7 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+18 frame err 0 samples 4096 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+case lc22k_st.raw.dont
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 7 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 22050 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+18 frame err 0 samples 2048 sr 22050 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+case lc22k_st.raw.s16.seek
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 7 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+18 frame err 0 samples 4096 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+1 seek
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+18 frame err 0 samples 4096 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+case lc22k_st.raw.s16.seekc
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 7 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+18 frame err 0 samples 4096 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+1 seek
+19 frame err 0 samples 4096 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+case ratechange_lc.adts.s16
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 7 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+18 frame err 0 samples 4096 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+2 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+3 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 1 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+2 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+case ratechange_lc.adts.flt
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 7 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+18 frame err 0 samples 4096 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+2 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+3 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 1 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+2 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+case ratechange_lc.adts.dm
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 7 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+18 frame err 0 samples 4096 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+2 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+3 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 1 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+2 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+case ratechange_lc.adts.dont
+1 init ret 0 sr 22050 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 7 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 22050 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+18 frame err 0 samples 2048 sr 22050 ch 2 sbr 0 ps 0 ot 2 ht 2 pos 2 3
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+2 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+3 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 1 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+2 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+case ratechange_lc.adts.s16.seek
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 7 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+18 frame err 0 samples 4096 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+2 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+3 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 1 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+2 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 seek
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+18 frame err 0 samples 4096 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+2 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+3 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 1 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+2 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+case ratechange_lc.adts.s16.seekc
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 7 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+18 frame err 0 samples 4096 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+2 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+3 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 1 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+2 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 seek
+19 frame err 0 samples 4096 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 2 pos 2 3
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+2 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+3 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 1 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+2 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+case ratechange_lc.raw.s16
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 7 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+18 frame err 0 samples 4096 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+2 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+3 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 1 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+2 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+case ratechange_lc.raw.flt
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 7 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+18 frame err 0 samples 4096 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+2 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+3 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 1 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+2 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+case ratechange_lc.raw.dm
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 7 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+18 frame err 0 samples 4096 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+2 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+3 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 1 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+2 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+case ratechange_lc.raw.dont
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 7 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 22050 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+18 frame err 0 samples 2048 sr 22050 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+2 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+3 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 1 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+2 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+case ratechange_lc.raw.s16.seek
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 7 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+18 frame err 0 samples 4096 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+2 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+3 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 1 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+2 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 seek
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+18 frame err 0 samples 4096 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+2 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+3 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 1 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+2 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+case ratechange_lc.raw.s16.seekc
+1 init ret 0 sr 44100 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 7 sf 44100 cc 2 sbr -1 ps -1 fl 0 fus 1 dss 0
+1 frame err 0 samples 0 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+18 frame err 0 samples 4096 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+2 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+3 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 1 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+2 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 seek
+19 frame err 0 samples 4096 sr 44100 ch 2 sbr 3 ps 0 ot 2 ht 0 pos 2 3
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+2 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+3 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 1 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+2 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 15 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+1 frame err 32 samples 0 sr 0 ch 0 sbr 0 ps 0 ot 0 ht 0 pos
+case he48_implicit.adts.s16
+1 init ret 0 sr 48000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 3 sf 48000 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 48000 ch 2 sbr 2 ps 0 ot 5 ht 2 pos 2 3
+48 frame err 0 samples 2048 sr 48000 ch 2 sbr 2 ps 0 ot 5 ht 2 pos 2 3
+case he48_implicit.adts.flt
+1 init ret 0 sr 48000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 3 sf 48000 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 48000 ch 2 sbr 2 ps 0 ot 5 ht 2 pos 2 3
+48 frame err 0 samples 2048 sr 48000 ch 2 sbr 2 ps 0 ot 5 ht 2 pos 2 3
+case he48_implicit.adts.dm
+1 init ret 0 sr 48000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 3 sf 48000 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 48000 ch 2 sbr 2 ps 0 ot 5 ht 2 pos 2 3
+48 frame err 0 samples 2048 sr 48000 ch 2 sbr 2 ps 0 ot 5 ht 2 pos 2 3
+case he48_implicit.adts.dont
+1 init ret 0 sr 48000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 3 sf 48000 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 96000 ch 2 sbr 1 ps 0 ot 5 ht 2 pos 2 3
+48 frame err 0 samples 4096 sr 96000 ch 2 sbr 1 ps 0 ot 5 ht 2 pos 2 3
+case he48_implicit.adts.s16.seek
+1 init ret 0 sr 48000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 3 sf 48000 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 48000 ch 2 sbr 2 ps 0 ot 5 ht 2 pos 2 3
+48 frame err 0 samples 2048 sr 48000 ch 2 sbr 2 ps 0 ot 5 ht 2 pos 2 3
+1 seek
+1 frame err 0 samples 0 sr 48000 ch 2 sbr 2 ps 0 ot 5 ht 2 pos 2 3
+48 frame err 0 samples 2048 sr 48000 ch 2 sbr 2 ps 0 ot 5 ht 2 pos 2 3
+case he48_implicit.adts.s16.seekc
+1 init ret 0 sr 48000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 3 sf 48000 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 48000 ch 2 sbr 2 ps 0 ot 5 ht 2 pos 2 3
+48 frame err 0 samples 2048 sr 48000 ch 2 sbr 2 ps 0 ot 5 ht 2 pos 2 3
+1 seek
+49 frame err 0 samples 2048 sr 48000 ch 2 sbr 2 ps 0 ot 5 ht 2 pos 2 3
+case he48_implicit.raw.s16
+1 init ret 0 sr 48000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 3 sf 48000 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 48000 ch 2 sbr 2 ps 0 ot 5 ht 0 pos 2 3
+48 frame err 0 samples 2048 sr 48000 ch 2 sbr 2 ps 0 ot 5 ht 0 pos 2 3
+case he48_implicit.raw.flt
+1 init ret 0 sr 48000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 3 sf 48000 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 48000 ch 2 sbr 2 ps 0 ot 5 ht 0 pos 2 3
+48 frame err 0 samples 2048 sr 48000 ch 2 sbr 2 ps 0 ot 5 ht 0 pos 2 3
+case he48_implicit.raw.dm
+1 init ret 0 sr 48000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 3 sf 48000 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 48000 ch 2 sbr 2 ps 0 ot 5 ht 0 pos 2 3
+48 frame err 0 samples 2048 sr 48000 ch 2 sbr 2 ps 0 ot 5 ht 0 pos 2 3
+case he48_implicit.raw.dont
+1 init ret 0 sr 48000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 3 sf 48000 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 48000 ch 2 sbr 2 ps 0 ot 5 ht 0 pos 2 3
+48 frame err 0 samples 2048 sr 48000 ch 2 sbr 2 ps 0 ot 5 ht 0 pos 2 3
+case he48_implicit.raw.s16.seek
+1 init ret 0 sr 48000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 3 sf 48000 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 48000 ch 2 sbr 2 ps 0 ot 5 ht 0 pos 2 3
+48 frame err 0 samples 2048 sr 48000 ch 2 sbr 2 ps 0 ot 5 ht 0 pos 2 3
+1 seek
+1 frame err 0 samples 0 sr 48000 ch 2 sbr 2 ps 0 ot 5 ht 0 pos 2 3
+48 frame err 0 samples 2048 sr 48000 ch 2 sbr 2 ps 0 ot 5 ht 0 pos 2 3
+case he48_implicit.raw.s16.seekc
+1 init ret 0 sr 48000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 3 sf 48000 cc 2 sbr -1 ps -1 fl 0 fus 0 dss 1
+1 frame err 0 samples 0 sr 48000 ch 2 sbr 2 ps 0 ot 5 ht 0 pos 2 3
+48 frame err 0 samples 2048 sr 48000 ch 2 sbr 2 ps 0 ot 5 ht 0 pos 2 3
+1 seek
+49 frame err 0 samples 2048 sr 48000 ch 2 sbr 2 ps 0 ot 5 ht 0 pos 2 3
+case lc_mono32.dab.s16
+1 init ret 0 sr 32000 ch 1
+1 asc ret 0
+1 asc ot 2 sfi 5 sf 32000 cc 1 sbr -1 ps -1 fl 1 fus 0 dss 1
+1 frame err 0 samples 0 sr 32000 ch 1 sbr 0 ps 0 ot 2 ht 0 pos 1
+9 frame err 0 samples 960 sr 32000 ch 1 sbr 0 ps 0 ot 2 ht 0 pos 1
+case lc_mono32.dab.s16.seek
+1 init ret 0 sr 32000 ch 1
+1 asc ret 0
+1 asc ot 2 sfi 5 sf 32000 cc 1 sbr -1 ps -1 fl 1 fus 0 dss 1
+1 frame err 0 samples 0 sr 32000 ch 1 sbr 0 ps 0 ot 2 ht 0 pos 1
+9 frame err 0 samples 960 sr 32000 ch 1 sbr 0 ps 0 ot 2 ht 0 pos 1
+1 seek
+1 frame err 0 samples 0 sr 32000 ch 1 sbr 0 ps 0 ot 2 ht 0 pos 1
+9 frame err 0 samples 960 sr 32000 ch 1 sbr 0 ps 0 ot 2 ht 0 pos 1
+case lc_mono32.dab.s16.seekc
+1 init ret 0 sr 32000 ch 1
+1 asc ret 0
+1 asc ot 2 sfi 5 sf 32000 cc 1 sbr -1 ps -1 fl 1 fus 0 dss 1
+1 frame err 0 samples 0 sr 32000 ch 1 sbr 0 ps 0 ot 2 ht 0 pos 1
+9 frame err 0 samples 960 sr 32000 ch 1 sbr 0 ps 0 ot 2 ht 0 pos 1
+1 seek
+10 frame err 0 samples 960 sr 32000 ch 1 sbr 0 ps 0 ot 2 ht 0 pos 1
+case lc_st48.dab.s16
+1 init ret 0 sr 48000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 3 sf 48000 cc 2 sbr -1 ps -1 fl 1 fus 0 dss 1
+1 frame err 0 samples 0 sr 48000 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+7 frame err 0 samples 1920 sr 48000 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+case lc_st48.dab.s16.seek
+1 init ret 0 sr 48000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 3 sf 48000 cc 2 sbr -1 ps -1 fl 1 fus 0 dss 1
+1 frame err 0 samples 0 sr 48000 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+7 frame err 0 samples 1920 sr 48000 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+1 seek
+1 frame err 0 samples 0 sr 48000 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+7 frame err 0 samples 1920 sr 48000 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+case lc_st48.dab.s16.seekc
+1 init ret 0 sr 48000 ch 2
+1 asc ret 0
+1 asc ot 2 sfi 3 sf 48000 cc 2 sbr -1 ps -1 fl 1 fus 0 dss 1
+1 frame err 0 samples 0 sr 48000 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+7 frame err 0 samples 1920 sr 48000 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+1 seek
+8 frame err 0 samples 1920 sr 48000 ch 2 sbr 0 ps 0 ot 2 ht 0 pos 2 3
+case he2_st48.dab.s16
+1 init ret 0 sr 48000 ch 1
+1 asc ret 0
+1 asc ot 2 sfi 6 sf 48000 cc 1 sbr -1 ps -1 fl 1 fus 1 dss 0
+1 frame err 0 samples 0 sr 48000 ch 2 sbr 1 ps 1 ot 5 ht 0 pos 2 3
+7 frame err 0 samples 3840 sr 48000 ch 2 sbr 1 ps 1 ot 5 ht 0 pos 2 3
+case he2_st48.dab.s16.seek
+1 init ret 0 sr 48000 ch 1
+1 asc ret 0
+1 asc ot 2 sfi 6 sf 48000 cc 1 sbr -1 ps -1 fl 1 fus 1 dss 0
+1 frame err 0 samples 0 sr 48000 ch 2 sbr 1 ps 1 ot 5 ht 0 pos 2 3
+7 frame err 0 samples 3840 sr 48000 ch 2 sbr 1 ps 1 ot 5 ht 0 pos 2 3
+1 seek
+1 frame err 0 samples 0 sr 48000 ch 2 sbr 1 ps 1 ot 5 ht 0 pos 2 3
+7 frame err 0 samples 3840 sr 48000 ch 2 sbr 1 ps 1 ot 5 ht 0 pos 2 3
+case he2_st48.dab.s16.seekc
+1 init ret 0 sr 48000 ch 1
+1 asc ret 0
+1 asc ot 2 sfi 6 sf 48000 cc 1 sbr -1 ps -1 fl 1 fus 1 dss 0
+1 frame err 0 samples 0 sr 48000 ch 2 sbr 1 ps 1 ot 5 ht 0 pos 2 3
+7 frame err 0 samples 3840 sr 48000 ch 2 sbr 1 ps 1 ot 5 ht 0 pos 2 3
+1 seek
+8 frame err 0 samples 3840 sr 48000 ch 2 sbr 1 ps 1 ot 5 ht 0 pos 2 3
