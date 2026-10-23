@@ -3,9 +3,6 @@
 #  - Solaris 11.4 SRU 15 : 3.15
 cmake_minimum_required(VERSION 3.15)
 
-include(CheckLibraryExists)
-include(CheckSymbolExists)
-
 project(LIBFAAD2 LANGUAGES C)
 
 # Set a default build type if none was specified
@@ -50,7 +47,83 @@ if(BUILD_SHARED_LIBS)
   endif()
 endif()
 
-find_library(MATH_LIBRARY m)
+# FAAD3 may be provided by a parent project. Otherwise discover an installed
+# library, using pkg-config when available.
+set(FAAD3_CMAKE_TARGET "" CACHE STRING "Existing CMake target that provides libfaad3")
+option(FAAD3_USE_BUNDLED_SOURCE "Build libfaad3 from the external/faac submodule instead of depending on an installed library" OFF)
+set(FAAC_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/external/faac" CACHE PATH "FAAC source directory")
+set(FAAD3_BUNDLED_SOURCE OFF)
+if(FAAD3_CMAKE_TARGET)
+  if(NOT TARGET ${FAAD3_CMAKE_TARGET})
+    message(FATAL_ERROR "FAAD3_CMAKE_TARGET does not name an existing target: ${FAAD3_CMAKE_TARGET}")
+  endif()
+  set(FAAD3_TARGET ${FAAD3_CMAKE_TARGET})
+elseif(TARGET faad3)
+  set(FAAD3_TARGET faad3)
+elseif(FAAD3_USE_BUNDLED_SOURCE AND EXISTS "${FAAC_SOURCE_DIR}/libfaad/meson.build")
+  include(TestBigEndian)
+  test_big_endian(FAAD3_BIG_ENDIAN)
+  if(FAAD3_BIG_ENDIAN)
+    set(FAAD3_WORDS_BIGENDIAN 1)
+  else()
+    set(FAAD3_WORDS_BIGENDIAN 0)
+  endif()
+  add_library(faad3_bundled OBJECT
+    "${FAAC_SOURCE_DIR}/libfaad/decoder.c"
+    "${FAAC_SOURCE_DIR}/libfaad/bits.c"
+    "${FAAC_SOURCE_DIR}/libfaad/asc.c"
+    "${FAAC_SOURCE_DIR}/libfaad/huffman.c"
+    "${FAAC_SOURCE_DIR}/libfaad/syntax.c"
+    "${FAAC_SOURCE_DIR}/libfaad/dequant.c"
+    "${FAAC_SOURCE_DIR}/libfaad/stereo.c"
+    "${FAAC_SOURCE_DIR}/libfaad/tns.c"
+    "${FAAC_SOURCE_DIR}/libfaad/imdct.c"
+    "${FAAC_SOURCE_DIR}/libfaad/sbr.c"
+    "${FAAC_SOURCE_DIR}/libfaad/ps.c"
+    "${FAAC_SOURCE_DIR}/libfaad/coupling.c"
+    "${FAAC_SOURCE_DIR}/libfaad/sbr_dec_tables.c"
+    "${FAAC_SOURCE_DIR}/common/fft.c"
+    "${FAAC_SOURCE_DIR}/common/sbr_tables.c"
+    "${FAAC_SOURCE_DIR}/common/sfb_tables.c"
+  )
+  set_target_properties(faad3_bundled PROPERTIES POSITION_INDEPENDENT_CODE ON)
+  target_compile_features(faad3_bundled PRIVATE c_std_11)
+  target_compile_definitions(faad3_bundled PRIVATE
+    PACKAGE=\"faac\"
+    PACKAGE_VERSION=\"3.0.0\"
+    WORDS_BIGENDIAN=${FAAD3_WORDS_BIGENDIAN}
+    MAX_CHANNELS=8
+    COMMON_PREFIX=faad_
+    FAADAPI=
+  )
+  target_include_directories(faad3_bundled PUBLIC
+    "${FAAC_SOURCE_DIR}/include"
+    "${FAAC_SOURCE_DIR}/libfaad"
+    "${FAAC_SOURCE_DIR}/common"
+  )
+  set(FAAD3_TARGET faad3_bundled)
+  set(FAAD3_BUNDLED_SOURCE ON)
+else()
+  find_package(PkgConfig QUIET)
+  if(PkgConfig_FOUND)
+    pkg_check_modules(FAAD3 QUIET IMPORTED_TARGET faad3)
+  endif()
+  if(TARGET PkgConfig::FAAD3)
+    set(FAAD3_TARGET PkgConfig::FAAD3)
+  else()
+    find_path(FAAD3_INCLUDE_DIR faad3.h)
+    find_library(FAAD3_LIBRARY NAMES faad3)
+    if(NOT FAAD3_INCLUDE_DIR OR NOT FAAD3_LIBRARY)
+      message(FATAL_ERROR "libfaad3 was not found. Install FAAC/FAAD3 or set FAAD3_CMAKE_TARGET, FAAD3_INCLUDE_DIR and FAAD3_LIBRARY.")
+    endif()
+    add_library(faad3_external UNKNOWN IMPORTED)
+    set_target_properties(faad3_external PROPERTIES
+      IMPORTED_LOCATION "${FAAD3_LIBRARY}"
+      INTERFACE_INCLUDE_DIRECTORIES "${FAAD3_INCLUDE_DIR}"
+    )
+    set(FAAD3_TARGET faad3_external)
+  endif()
+endif()
 
 include(GNUInstallDirs)
 
@@ -82,100 +155,48 @@ file(READ include/faad.h.in FAAD_H_SRC)
 string(REGEX REPLACE "@VERSION@" "${FAAD_VERSION}" FAAD_H_SRC ${FAAD_H_SRC})
 file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/include/faad.h ${FAAD_H_SRC})
 
-# Read sources list
-
-file(GLOB_RECURSE LIBFAAD_SOURCES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} libfaad/*.c libfaad/*.h)
-mark_as_advanced(LIBFAAD_SOURCES)
-
-file(GLOB_RECURSE FAAD_SOURCES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} frontend/*.c frontend/*.h)
-if (NOT MSVC)
-  list(FILTER FAAD_SOURCES EXCLUDE REGEX ".*getopt\\.[ch]$")
-endif()
-
-# Build
-
-# Lets stick to predefined config, until more flexibility is actually requested.
-set(FAAD_DEFINES
-  HAVE_INTTYPES_H=1
-  HAVE_MEMCPY=1
-  HAVE_STRING_H=1
-  HAVE_STRINGS_H=1
-  HAVE_SYS_STAT_H=1
-  HAVE_SYS_TYPES_H=1
-  PACKAGE_VERSION=\"${FAAD_VERSION}\"
-)
-
-option(FAAD_APPLY_DRC "Apply dynamic range control" ON)
-if(FAAD_APPLY_DRC)
-  list(APPEND FAAD_DEFINES
-    APPLY_DRC
-  )
-endif()
-
-check_library_exists(m lrintf "" HAVE_LIBM)
-if(HAVE_LIBM)
-  list(APPEND CMAKE_REQUIRED_LIBRARIES m)
-endif()
-
-check_symbol_exists(lrintf "math.h" HAVE_LRINTF)
-if(HAVE_LRINTF)
-  list(APPEND FAAD_DEFINES
-    HAVE_LRINTF=1
-  )
-endif()
-
-set(FAAD_FLAGS
-  -Wall
-)
-if(MSVC)
-  list(APPEND FAAD_FLAGS
-    /wd4702 # unreachable code; there is a false-positive report
-    /wd4820 # implicit padding in structs
-    /wd5045 # Spectre nonsense
-  )
-else()
-  list(APPEND FAAD_FLAGS
-    -pedantic
-  )
-endif()
-
-if(CMAKE_C_COMPILER_ID MATCHES "GNU")
-  list(APPEND FAAD_FLAGS -ffloat-store)
-endif()  # GCC
-
-file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/include/neaacdec.h
-     DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/include)
-
+# Keep the historic library target names. The shim implements one API and
+# FAAD3 owns the decoder build variants, so these targets share the same code.
 foreach(LIB faad faad_drm faad_fixed faad_drm_fixed)
-  add_library(${LIB} ${LIBFAAD_SOURCES})
-  if(MATH_LIBRARY)
-    target_link_libraries(${LIB} PUBLIC ${MATH_LIBRARY})
-  endif()
+  add_library(${LIB} libfaad/shim.c)
+  set_target_properties(${LIB} PROPERTIES C_VISIBILITY_PRESET hidden)
   target_include_directories(${LIB} PUBLIC
-    ${CMAKE_CURRENT_BINARY_DIR}/include
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/include>
+    $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
   )
-  target_include_directories(${LIB} PRIVATE
-    libfaad
-  )
-  target_compile_definitions(${LIB} PRIVATE
-    ${FAAD_DEFINES}
-  )
-  target_compile_options(${LIB} PRIVATE
-    ${FAAD_FLAGS}
-  )
+  target_compile_definitions(${LIB} PRIVATE FAAD2_VERSION="${FAAD_VERSION}")
+  target_link_libraries(${LIB} PRIVATE ${FAAD3_TARGET})
+  if(BUILD_SHARED_LIBS AND WIN32)
+    target_sources(${LIB} PRIVATE libfaad2.def)
+  endif()
+  if(NOT WIN32)
+    target_link_libraries(${LIB} PRIVATE m)
+  endif()
+  if(NOT MSVC)
+    target_compile_options(${LIB} PRIVATE -Wall -Wextra -pedantic)
+  endif()
 endforeach()
 
-foreach(LIB faad_drm faad_drm_fixed)
-target_compile_definitions(${LIB} PRIVATE
-  DRM_SUPPORT
-)
-endforeach()
+option(FAAD_BUILD_TESTS "Build tests" OFF)
+if(FAAD_BUILD_TESTS)
+  enable_testing()
+  add_executable(shim_test tests/shim_test.c)
+  target_link_libraries(shim_test PRIVATE faad)
+  if(NOT WIN32)
+    target_link_libraries(shim_test PRIVATE m)
+  endif()
+  add_test(NAME shim_test COMMAND shim_test "${CMAKE_CURRENT_SOURCE_DIR}/tests/data")
+endif()
 
-foreach(LIB faad_fixed faad_drm_fixed)
-target_compile_definitions(${LIB} PRIVATE
-  FIXED_POINT
-)
-endforeach()
+# Compile the libFuzzer entry points without requiring a fuzzing runtime.
+option(FAAD_BUILD_FUZZ "Build fuzz entry point object targets" OFF)
+if(FAAD_BUILD_FUZZ)
+  foreach(name decode config)
+    add_library(fuzz_${name} OBJECT fuzz/fuzz_${name}.c)
+    target_link_libraries(fuzz_${name} PRIVATE faad)
+  endforeach()
+endif()
 
 # Generate a pkg-config files
 
@@ -237,47 +258,40 @@ function(transform_pc_file INPUT_FILE OUTPUT_FILE VERSION)
 
   string(REGEX REPLACE "@VERSION@" "${VERSION}" TEXT ${TEXT})
 
+  set(FAAD_PC_LIBS_PRIVATE "")
+  set(FAAD_PC_REQUIRES_PRIVATE "")
+  if(NOT FAAD3_BUNDLED_SOURCE)
+    if(TARGET PkgConfig::FAAD3)
+      set(FAAD_PC_REQUIRES_PRIVATE "faad3")
+    else()
+      set(FAAD_PC_LIBS_PRIVATE "-lfaad3")
+    endif()
+  endif()
+  if(NOT WIN32)
+    string(APPEND FAAD_PC_LIBS_PRIVATE " -lm")
+  endif()
+  string(REPLACE "@FAAD_PC_LIBS_PRIVATE@" "${FAAD_PC_LIBS_PRIVATE}" TEXT "${TEXT}")
+  string(REPLACE "@FAAD_PC_REQUIRES_PRIVATE@" "${FAAD_PC_REQUIRES_PRIVATE}" TEXT "${TEXT}")
   file(WRITE ${OUTPUT_FILE} ${TEXT})
 endfunction()
 
 transform_pc_file("libfaad/faad2.pc.in" "${CMAKE_CURRENT_BINARY_DIR}/faad2.pc" "${FAAD_VERSION}")
 
 foreach(LIB faad faad_drm faad_fixed faad_drm_fixed)
-  set_target_properties(${LIB} PROPERTIES
-      VERSION "${FAAD_ABI_COMPATIBILITY}.${FAAD_ABI_VERSION_AGE}.${FAAD_ABI_VERSION_REVISION}"
-      SOVERSION "${FAAD_ABI_COMPATIBILITY}"
-  )
+set_target_properties(${LIB} PROPERTIES
+  VERSION "${FAAD_ABI_COMPATIBILITY}.${FAAD_ABI_VERSION_AGE}.${FAAD_ABI_VERSION_REVISION}"
+  SOVERSION "${FAAD_ABI_COMPATIBILITY}"
+)
 endforeach()
 
-# CLI
-option(FAAD_BUILD_CLI "Build faad_cli executable" ON)
-if (FAAD_BUILD_CLI)
-  add_executable(faad_cli ${FAAD_SOURCES})
-  target_link_libraries(faad_cli faad)
-  target_compile_definitions(faad_cli PRIVATE ${FAAD_DEFINES})
-  target_compile_options(faad_cli PRIVATE ${FAAD_FLAGS})
-
-  if (MSVC)
-    target_include_directories(faad_cli PRIVATE
-      frontend
-    )
-  else()
-    set_target_properties(faad_cli PROPERTIES OUTPUT_NAME faad)
-  endif()
-endif()
 # Installation
 
 if(NOT FAAD_BUNDLED_MODE)
   install(FILES "${CMAKE_CURRENT_BINARY_DIR}/faad2.pc"
     DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig")
 
-  set(INSTALL_TARGETS faad faad_drm)
-  if (FAAD_BUILD_CLI)
-    list(APPEND INSTALL_TARGETS faad_cli)
-  endif()
-
   install(
-    TARGETS ${INSTALL_TARGETS}
+    TARGETS faad faad_drm
     ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
     LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}"
     RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
@@ -286,13 +300,12 @@ if(NOT FAAD_BUNDLED_MODE)
   # exclude faad.h.in
   install(
     FILES ${CMAKE_CURRENT_BINARY_DIR}/include/faad.h
-    FILES ${CMAKE_CURRENT_BINARY_DIR}/include/neaacdec.h
+    FILES ${CMAKE_CURRENT_SOURCE_DIR}/include/neaacdec.h
     DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
   )
 
   install(
-    FILES frontend/faad.man
-    DESTINATION ${CMAKE_INSTALL_MANDIR}/man1
-    RENAME faad.1
+    FILES docs/libfaad.3
+    DESTINATION ${CMAKE_INSTALL_MANDIR}/man3
   )
 endif()  # FAAD_BUNDLED_MODE
