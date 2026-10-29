@@ -3,6 +3,14 @@ load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 wrap_json_properties(name = "properties", src = "@//:properties.json")
 
+# The decoder shim wraps the FAAC repository's libfaad3. This custom BUILD
+# file mirrors its Meson source list for Bazel consumers.
+new_local_repository(
+    name = "faac",
+    path = "external/faac",
+    build_file = "//:bazel/faac.BUILD",
+)
+
 http_archive(
     name = "rules_fuzzing",
     sha256 = "ff52ef4845ab00e95d29c02a9e32e9eff4e0a4c9c8a6bcf8407a2f19eb3f9190",
@@ -11,13 +19,26 @@ http_archive(
 )
 
 load("@rules_fuzzing//fuzzing:repositories.bzl", "rules_fuzzing_dependencies")
-
 rules_fuzzing_dependencies()
 
-load("@rules_fuzzing//fuzzing:init.bzl", "rules_fuzzing_init")
+load("@rules_python//python:repositories.bzl", "python_register_toolchains")
+python_register_toolchains(
+    name = "python311",
+    python_version = "3.11",
+)
 
-rules_fuzzing_init()
+load("@bazel_skylib//:workspace.bzl", "bazel_skylib_workspace")
+load("@rules_python//python:pip.bzl", "pip_parse")
+
+# rules_fuzzing 0.4.1's wheel installer uses pkg_resources. Python 3.12+
+# removed APIs used by the setuptools version pinned by this ruleset.
+pip_parse(
+    name = "fuzzing_py_deps",
+    extra_pip_args = ["--require-hashes"],
+    python_interpreter = "python3.11",
+    requirements = "@rules_fuzzing//fuzzing:requirements.txt",
+)
+bazel_skylib_workspace()
 
 load("@fuzzing_py_deps//:requirements.bzl", "install_deps")
-
 install_deps()

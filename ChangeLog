@@ -1,3 +1,32 @@
+Next release:
+	* Replace the legacy decoder with a library-only NeAACDec API shim over
+	  libfaad3, retaining the libfaad.so.2 ABI and FAAD2 channel order/positions.
+	  The CLI now ships with libfaad3.
+	* Drop Main/LTP/SSR/LD/ER profiles, DRM, fixed-point decoding, LATM, ADIF,
+	  and raw AAC without ASC. Ignore useOldADTSFormat; InitDRM remains
+	  exported but reports failure.
+	* Apply dynamic range control and programme level normalisation as before,
+	  including the 20 dB attenuation of streams without a programme reference
+	  level.
+	* Add tests that compare the shim with FAAD2 2.11.4 stream by stream:
+	  results of every call, delay and signal-to-noise ratio.
+	* Report 8 as 7 channels in NeAACDecAudioSpecificConfig and set
+	  downSampledSBR for unsignalled ASCs above 24 kHz, as FAAD2 did.
+	* Upsample AAC-LC streams without SBR data at or below 24 kHz to twice the
+	  rate with libfaar, as FAAD2 did for implicit SBR, unless
+	  dontUpSampleImplicitSBR is set. The output lags by 962 samples per
+	  channel, as before.
+	* Return implicit SBR above 24 kHz at the core rate by decimating the
+	  full-rate output with libfaar, as FAAD2 did. libfaar's lookahead makes the
+	  output lag FAAD2's by 73 samples; FAAD2's 32-band synthesis did not need
+	  that lead.
+	* Fail ADTS frames written for another sampling rate than the stream's
+	  first with error 32, as FAAD2 did.
+	* Point the compile-time notice in the legacy faad.h to libfaad3, and stop
+	  the build from dropping the semicolons of the generated faad.h.
+	* Require libfaar (with libfaad3) to build. Set FAAR_CMAKE_TARGET when a
+	  parent project provides it; the Bazel build needs Bazel 7.
+
 2.11.4 (2026-10-01):
 	[ Logan Russell ]
 	* Fix the fixed-point SBR envelope estimate
