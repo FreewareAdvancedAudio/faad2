@@ -42,8 +42,12 @@ library; static consumers get the extra link flags from
 | Run the tests | `-DFAAD_BUILD_TESTS=ON` (plus `-DFAAD3_USE_BUNDLED_SOURCE=ON` if libfaad3 is not installed), then `ctest --test-dir build` |
 
 Bazel builds libfaar as `@faac//:faar`, with the same double-precision filter kernels
-as Meson's default. The historic library variant labels are kept for downstream build
-files; they all use the same shim and do not enable fixed-point decoding. The fuzz
+as Meson's default.
+
+As FAAD2 did, the install provides both `libfaad.so.2` and `libfaad_drm.so.2`. They
+are the same shim, and neither implements DRM, so `NeAACDecInitDRM` fails in both. The
+`faad_fixed` and `faad_drm_fixed` variants are built for downstream build files but not
+installed, and they do not enable fixed-point decoding. The fuzz
 targets use the workspace's Python 3.11 toolchain, and the workspace setup also needs
 Python 3.11 on the host for the pinned `rules_fuzzing` wheel installer.
 
@@ -56,7 +60,8 @@ with an AudioSpecificConfig (ASC).
 
 - Not supported: MAIN, LTP, SSR, LD and error-resilient profiles, DRM, LATM, ADIF,
   fixed-point decoding, and raw AAC without an ASC.
-- `NeAACDecInitDRM` is exported by every build, not only the DRM one, but always fails.
+- `NeAACDecInitDRM` is exported by every build, including `libfaad_drm.so.2`, but always
+  fails.
 - `useOldADTSFormat` is ignored, and `defObjectType` and `defSampleRate` do not
   select stream parameters.
 - `NeAACDecGetCapabilities` reports only `LC_DEC_CAP` (FAAD2 also reported MAIN, LTP,
