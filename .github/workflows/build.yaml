@@ -93,7 +93,7 @@ jobs:
           brew install pkgconf
         else
           sudo apt-get update
-          sudo apt-get install -y pkg-config
+          sudo apt-get install -y pkg-config lld llvm
         fi
     - name: Build and install libfaad3
       shell: bash
@@ -103,6 +103,10 @@ jobs:
           # Git's GNU link.exe shadows MSVC's linker in a bash step.
           rm -f /usr/bin/link.exe
           vsenv="--vsenv"
+        fi
+        if [ "$RUNNER_OS" = Linux ] && [ "$CC" = clang ]; then
+          # The release build uses LTO; GNU ar and ld cannot read clang's bitcode.
+          export AR=llvm-ar CC_LD=lld
         fi
         meson setup faac-build external/faac $vsenv --prefix="$RUNNER_TEMP/usrlocal" --libdir=lib -Dbuildtype=release -Ddecoder=true
         ninja -C faac-build install
