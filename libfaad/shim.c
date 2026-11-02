@@ -40,7 +40,7 @@
 
 #define SHIM_MAX_CHANNELS 64
 #define SYNC_SEARCH 768
-#define DRC_TARGET 80   /* quarter-dB below full scale, i.e. -20 dBFS */
+#define DRC_TARGET_DB (-20.0f)
 
 /* FAAD2 error numbers; the strings are indexed by number. */
 enum {
@@ -354,7 +354,7 @@ static faad_status shim_open_dec(const shim_t *s, enum faad_stream_format stream
     /* FAAD2 applies the full compression and normalises to -20 dBFS. */
     cfg.drc_cut = 127;
     cfg.drc_boost = 127;
-    cfg.drc_target_level = DRC_TARGET;
+    cfg.drc_target_level = DRC_TARGET_DB;
     return faad_decoder_open(&cfg, asc, asc_len, dec);
 }
 
@@ -742,7 +742,7 @@ static unsigned char map_status(faad_status st)
  * Callers may have worked around that, so it is reproduced. */
 static void attenuate_missing_reference(void *pcm, pcm_type t, size_t count)
 {
-    const float g = exp2f(-(float)DRC_TARGET / 24.0f);
+    const float g = exp2f(DRC_TARGET_DB / 6.0f);
     size_t i;
 
     for (i = 0; i < count; i++) {
@@ -829,7 +829,7 @@ static void *shim_decode(shim_t *s, NeAACDecFrameInfo *fi, const uint8_t *buf, u
     st_type = s->type;
     esz = s->type == T_I16 ? 2 : 4;
     frames = wr / (uint32_t)(esz * n);
-    if ((flags & FAAD_FRAME_DRC_INFO) && !(info.flags & FAAD_STREAM_PROG_REF_LEVEL))
+    if ((flags & FAAD_FRAME_DRC_INFO) && !(info.flags & FAAD_STREAM_DRC_REF_LEVEL))
         attenuate_missing_reference(s->pcm, s->type, (size_t)frames * n);
     rate = info.sample_rate;
     if (s->upsample && !(flags & FAAD_FRAME_SBR) && s->type == T_F32 && rate <= 24000) {
