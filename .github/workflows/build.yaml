@@ -56,6 +56,12 @@ jobs:
            cc: gcc
            cxx: g++
            cflags: -Wall -fdiagnostics-color=always -O2 -Werror=strict-aliasing
+           static_libs: 'true'
+         - name: GCC Bundled Static
+           cc: gcc
+           cxx: g++
+           cflags: -Wall -fdiagnostics-color=always -O2 -Werror=strict-aliasing
+           bundled: 'true'
          - name: MSVC
            os: windows-latest
            cmake_args: >-
@@ -71,6 +77,8 @@ jobs:
       CFLAGS: ${{ matrix.cflags || '-Wall' }}
       CXXFLAGS: ${{ matrix.cflags || '-Wall' }}
       SHARED: ${{ matrix.shared || 'false' }}
+      BUNDLED: ${{ matrix.bundled || 'false' }}
+      STATIC_LIBS: ${{ matrix.static_libs || 'false' }}
 
     steps:
     - name: Checkout the source
@@ -87,15 +95,12 @@ jobs:
       shell: bash
       run: |
         python -m pip install meson ninja
-        if [ "$RUNNER_OS" = Windows ]; then
-          choco install pkgconfiglite -y
-        elif [ "$RUNNER_OS" = macOS ]; then
-          brew install pkgconf
-        else
+        if [ "$RUNNER_OS" = Linux ]; then
           sudo apt-get update
-          sudo apt-get install -y pkg-config lld llvm
+          sudo apt-get install -y lld llvm
         fi
     - name: Build and install libfaad3
+      if: matrix.bundled != 'true'
       shell: bash
       run: |
         vsenv=""
@@ -108,14 +113,18 @@ jobs:
           # The release build uses LTO; GNU ar and ld cannot read clang's bitcode.
           export AR=llvm-ar CC_LD=lld
         fi
-        meson setup faac-build external/faac $vsenv --prefix="$RUNNER_TEMP/usrlocal" --libdir=lib -Dbuildtype=release -Ddecoder=true
+        meson setup faac-build external/faac $vsenv --prefix="$RUNNER_TEMP/usrlocal" --libdir=lib -Dbuildtype=release -Dencoder=false -Dfrontend=false
         ninja -C faac-build install
-        echo "PKG_CONFIG_PATH=$RUNNER_TEMP/usrlocal/lib/pkgconfig" >> "$GITHUB_ENV"
     - name: Configure and build
       shell: bash
       run: |
+        # The bundled job compiles external/faac into the shim; the others use
+        # the install from the previous step, found through its CMake package.
         cmake -S . -B build \
             -DCMAKE_INSTALL_PREFIX="$RUNNER_TEMP/usrlocal" \
+            -DCMAKE_PREFIX_PATH="$RUNNER_TEMP/usrlocal" \
+            -DFAAC_USE_BUNDLED_SOURCE=${BUNDLED} \
+            -DFAAC_USE_STATIC_LIBS=${STATIC_LIBS} \
             -DBUILD_SHARED_LIBS=${SHARED} \
             -DFAAD_BUILD_TESTS=ON \
             ${{ matrix.cmake_args }}
@@ -158,16 +167,15 @@ jobs:
           cmake:p
           meson:p
           ninja:p
-          pkgconf:p
           gcc:p
     - name: Build and install libfaad3
       run: |
-        meson setup faac-build external/faac --prefix="$(pwd)/temp" --libdir=lib -Dbuildtype=release -Ddecoder=true
+        meson setup faac-build external/faac --prefix="$(pwd)/temp" --libdir=lib -Dbuildtype=release -Dencoder=false -Dfrontend=false
         ninja -C faac-build install
     - name: Configure and build
       run: |
-        export PKG_CONFIG_PATH="$(pwd)/temp/lib/pkgconfig"
         cmake -S . -B build \
+            -DCMAKE_PREFIX_PATH="$(pwd)/temp" \
             -DCMAKE_INSTALL_PREFIX="$(pwd)/temp" \
             -DBUILD_SHARED_LIBS=ON \
             -DFAAD_BUILD_TESTS=ON
