@@ -20,6 +20,10 @@ Next release:
 	  full-rate output with libfaar, as FAAD2 did. libfaar's lookahead makes the
 	  output lag FAAD2's by 73 samples; FAAD2's 32-band synthesis did not need
 	  that lead.
+	* Report mono streams as stereo and return their frames as dual-mono, as
+	  FAAD2 2.11.3 did for implicit PS signalling, instead of FAAD2 2.11.4's
+	  single channel. Players that open their sink from NeAACDecInit played
+	  HE-AACv2 ADTS streams, whose header says mono, in slow motion.
 	* Fail ADTS frames written for another sampling rate than the stream's
 	  first with error 32, as FAAD2 did.
 	* Point the compile-time notice in the legacy faad.h to libfaad3, and stop

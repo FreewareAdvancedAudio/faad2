@@ -108,7 +108,7 @@ static NeAACDecHandle open_input(const Input *in, int raw, int fmt, int downmix,
     if (raw) EQ(NeAACDecInit2(h, asc, 2, &sr, &ch), 0);
     else EQ(NeAACDecInit(h, in->data, (unsigned long)in->size, &sr, &ch), 0);
     EQ(sr, rate);
-    EQ(ch, channels);
+    EQ(ch, channels == 1 ? 2 : channels); /* FAAD2 2.11.3 upmixed mono */
     return h;
 }
 
@@ -139,7 +139,7 @@ static void stream_test(const Input *in, unsigned long rate, unsigned channels, 
     for (i = 0; i < in->count; i++) {
         NeAACDecFrameInfo a, r;
         void *p = decode(adts, in, i, 0, &a);
-        unsigned out_ch = downmix ? 2 : channels;
+        unsigned out_ch = downmix || channels == 1 ? 2 : channels; /* FAAD2 2.11.3 upmixed mono */
         CHECK(p != NULL);
         EQ(a.error, 0);
         EQ(a.samples, i ? (he || up ? 2048 : 1024) * out_ch : 0);
@@ -149,6 +149,11 @@ static void stream_test(const Input *in, unsigned long rate, unsigned channels, 
         EQ(a.object_type, he ? HE_AAC : LC);
         EQ(a.sbr, he ? SBR_UPSAMPLED : up ? NO_SBR_UPSAMPLED : NO_SBR);
         if (out_ch != 1) positions(&a, out_ch == 6);
+        if (channels == 1 && !downmix && p && a.samples) { /* dual-mono, as FAAD2 2.11.3 returned */
+            const short *pcm = p;
+            size_t k;
+            for (k = 0; k < a.samples; k += 2) if (pcm[k] != pcm[k + 1]) { CHECK(0); break; }
+        }
         consumed += a.bytesconsumed;
         if (raw) {
             void *q = decode(raw, in, i, 1, &r);
@@ -223,6 +228,93 @@ static void seek_test(const Input *in)
         EQ(fi.samples, 2048);
         NeAACDecClose(h);
     }
+}
+
+/* HE-AACv2 in ADTS: the header says mono, and PS may only show up after some
+ * frames (lead of them are plain mono AAC-LC from mono24_lc.aac, whose 24 kHz
+ * core and ADTS header match). Init and every frame must report 2 channels
+ * all the same: players open their sink from Init. */
+static void he_v2_adts_test(const char *dir, unsigned lead)
+{
+    const unsigned lead_frames = lead;
+    long first_ps = -1;
+    char path[512];
+    FILE *f;
+    unsigned char *d, *adts;
+    long n, pos;
+    unsigned long rate;
+    unsigned char ch;
+    NeAACDecHandle h;
+    NeAACDecFrameInfo fi;
+    unsigned frames = 0;
+    uint32_t asc_len, adts_len = 0;
+
+    snprintf(path, sizeof path, "%s/dab/he2_st48.dab", dir);
+    f = fopen(path, "rb");
+    CHECK(f != NULL);
+    if (!f) return;
+    fseek(f, 0, SEEK_END); n = ftell(f); fseek(f, 0, SEEK_SET);
+    d = allocate((size_t)n);
+    CHECK(fread(d, 1, (size_t)n, f) == (size_t)n);
+    fclose(f);
+
+    asc_len = d[0] | d[1] << 8 | d[2] << 16 | (uint32_t)d[3] << 24;
+    adts = allocate((size_t)n + 65536);
+    if (lead) {
+        long ln, lp;
+        unsigned char *l;
+        snprintf(path, sizeof path, "%s/mono24_lc.aac", dir);
+        f = fopen(path, "rb");
+        CHECK(f != NULL);
+        if (!f) { free(adts); free(d); return; }
+        fseek(f, 0, SEEK_END); ln = ftell(f); fseek(f, 0, SEEK_SET);
+        l = allocate((size_t)ln);
+        CHECK(fread(l, 1, (size_t)ln, f) == (size_t)ln);
+        fclose(f);
+        for (lp = 0; lead && lp + 7 <= ln; lead--) {
+            uint32_t flen = (uint32_t)(((l[lp + 3] & 3) << 11) | (l[lp + 4] << 3) | (l[lp + 5] >> 5));
+            if (flen < 7 || lp + (long)flen > ln) break;
+            memcpy(adts + adts_len, l + lp, flen);
+            adts_len += flen;
+            lp += flen;
+        }
+        free(l);
+    }
+    for (pos = 4 + asc_len; pos + 4 <= n;) {
+        uint32_t len = d[pos] | d[pos + 1] << 8 | d[pos + 2] << 16 | (uint32_t)d[pos + 3] << 24;
+        uint32_t flen = len + 7;
+        unsigned char hdr[7] = {
+            0xff, 0xf1,
+            (unsigned char)((1 << 6) | (6 << 2) | 0),
+            (unsigned char)((1 << 6) | ((flen >> 11) & 3)),
+            (unsigned char)((flen >> 3) & 0xff),
+            (unsigned char)(((flen & 7) << 5) | 0x1f),
+            0xfc
+        };
+        memcpy(adts + adts_len, hdr, 7);
+        memcpy(adts + adts_len + 7, d + pos + 4, len);
+        adts_len += flen;
+        pos += 4 + len;
+    }
+
+    h = NeAACDecOpen();
+    CHECK((signed char)NeAACDecInit(h, adts, adts_len, &rate, &ch) == 0);
+    EQ(rate, 48000);
+    EQ(ch, 2);
+    for (pos = 0; pos < adts_len; frames++) {
+        void *o = NeAACDecDecode(h, &fi, adts + pos, adts_len - pos);
+        CHECK(o != NULL && fi.error == 0);
+        EQ(fi.channels, 2);
+        EQ(fi.samplerate, 48000);
+        if (fi.ps && first_ps < 0) first_ps = (long)frames;
+        pos += fi.bytesconsumed;
+    }
+    CHECK(frames >= 8);
+    CHECK(first_ps >= (long)lead_frames); /* PS only starts after the lead */
+    CHECK(first_ps >= 0);
+    free(adts);
+    free(d);
+    NeAACDecClose(h);
 }
 
 static void decode2_test(const Input *in)
@@ -431,7 +523,7 @@ static void downmix_midstream_test(const Input *in)
 static void dab_test(const char *dir)
 {
     static const struct { const char *name; unsigned ch, out_ch; unsigned long rate, per_frame; int sbr, ps; } v[] = {
-        {"lc_mono32", 1, 1, 32000, 960, 0, 0},
+        {"lc_mono32", 1, 2, 32000, 1920, 0, 0},
         {"lc_st48", 2, 2, 48000, 1920, 0, 0},
         {"he2_st48", 2, 2, 48000, 3840, 1, 1}
     };
@@ -478,7 +570,7 @@ static void dab_test(const char *dir)
         unsigned char ch;
         NeAACDecHandle h = NeAACDecOpen();
         CHECK((signed char)NeAACDecInit2(h, asc, sizeof asc, &rate, &ch) == 0);
-        CHECK(rate == 48000 && ch == 1);
+        CHECK(rate == 48000 && ch == 2); /* mono core, implicit PS */
         NeAACDecClose(h);
     }
 }
@@ -798,6 +890,8 @@ int main(int argc, char **argv)
     context = "resync and config"; resync_and_config_test(&inputs[0]);
     context = "mid-stream downmix"; downmix_midstream_test(&inputs[1]);
     context = "DAB+"; dab_test(argv[1]);
+    context = "HE-AACv2 ADTS"; he_v2_adts_test(argv[1], 0);
+    context = "HE-AACv2 ADTS, late PS"; he_v2_adts_test(argv[1], 8);
     context = "junk and false syncs"; junk_test(&inputs[0]);
     context = "DRC"; drc_test(argv[1]);
     for (i = 0; i < 4; i++) { free(inputs[i].frames); free(inputs[i].data); }
