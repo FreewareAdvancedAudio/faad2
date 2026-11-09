@@ -20,26 +20,38 @@ This repository only builds the shim. The decoder (libfaad3), the resampler
 
 ## Building
 
-The shim builds against installed libfaad3 and libfaar (for example the FAAC
-development packages):
+The shim builds against an installed FAAC, which provides libfaad3 and libfaar.
+The build finds it through FAAC's CMake package (`find_package(faac)`), so point
+`CMAKE_PREFIX_PATH` at the FAAC install prefix. `PKG_CONFIG_PATH` is not consulted.
 
 ```sh
-cmake -S . -B build
+cmake -S . -B build -DCMAKE_PREFIX_PATH=/path/to/faac/prefix
 cmake --build build
 cmake --install build
 ```
 
+If you build FAAC only for the shim, `-Dencoder=false -Dfrontend=false` skips its
+encoder and command-line tools.
+
 Link with `pkg-config --cflags --libs faad2`. The build keeps the `faad3` and
 `faar` pkg-config dependencies, and `-DBUILD_SHARED_LIBS=OFF` builds a static
 library; static consumers get the extra link flags from
-`pkg-config --libs --static faad2`.
+`pkg-config --libs --static faad2`. To link FAAC's static archives, add
+`-DFAAC_USE_STATIC_LIBS=ON`.
+
+To build without installing FAAC, compile its sources into the shim. With
+`-DBUILD_SHARED_LIBS=OFF` the result is a self-contained `libfaad.a`:
+
+```sh
+git submodule update --init external/faac
+cmake -S . -B build -DFAAC_USE_BUNDLED_SOURCE=ON -DBUILD_SHARED_LIBS=OFF
+```
 
 | Need | How |
 |---|---|
-| Compile libfaad3 and libfaar into the shim | `git submodule update --init external/faac`, then `-DFAAD3_USE_BUNDLED_SOURCE=ON` |
 | Use targets from a parent CMake project | `-DFAAD3_CMAKE_TARGET=name -DFAAR_CMAKE_TARGET=name` |
 | Bazel (Bazel 7; WORKSPACE files are not supported by Bazel 9) | `git submodule update --init external/faac`, then `bazel build //:faad` |
-| Run the tests | `-DFAAD_BUILD_TESTS=ON` (plus `-DFAAD3_USE_BUNDLED_SOURCE=ON` if libfaad3 is not installed), then `ctest --test-dir build` |
+| Run the tests | `-DFAAD_BUILD_TESTS=ON` (plus `-DFAAC_USE_BUNDLED_SOURCE=ON` if FAAC is not installed), then `ctest --test-dir build` |
 
 Bazel builds libfaar as `@faac//:faar`, with the same double-precision filter kernels
 as Meson's default.
@@ -178,7 +190,7 @@ legacy manual in `docs/` names manual section 3, not FAAD version 3.
 | `docs` | Legacy API manual and compatibility notes |
 | `tests` | API regression tests, the FAAD2 comparison (`compat_test.c` and the recording in `golden`) and AAC fixtures |
 | `fuzz` | Decoder API fuzzing entry points |
-| `external/faac` | FAAC source submodule (libfaad3 and libfaar) for vendored builds |
+| `external/faac` | FAAC source submodule (libfaad3 and libfaar) for `FAAC_USE_BUNDLED_SOURCE` and Bazel builds |
 | `bazel` | BUILD file for the FAAC sources |
 
 ## License

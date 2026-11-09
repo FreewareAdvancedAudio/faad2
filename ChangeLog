@@ -8,6 +8,10 @@ Next release:
 	* Apply dynamic range control and programme level normalisation as before,
 	  including the 20 dB attenuation of streams without a programme reference
 	  level.
+	* Find libfaad3 and libfaar through the FAAC CMake package: set
+	  CMAKE_PREFIX_PATH to the FAAC install (PKG_CONFIG_PATH is no longer
+	  consulted). -DFAAC_USE_BUNDLED_SOURCE=ON compiles the external/faac
+	  submodule into the shim instead.
 	* Add tests that compare the shim with FAAD2 2.11.4 stream by stream:
 	  results of every call, delay and signal-to-noise ratio.
 	* Report 8 as 7 channels in NeAACDecAudioSpecificConfig and set

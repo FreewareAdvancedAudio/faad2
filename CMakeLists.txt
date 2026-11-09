@@ -47,20 +47,39 @@ if(BUILD_SHARED_LIBS)
   endif()
 endif()
 
-# FAAD3 may be provided by a parent project. Otherwise discover an installed
-# library, using pkg-config when available.
+# libfaad3 and libfaar come from FAAC. For each, in order:
+#  1. FAAD3_CMAKE_TARGET / FAAR_CMAKE_TARGET, a target from a parent project.
+#  2. An existing target named faad3 / faar.
+#  3. FAAC_USE_BUNDLED_SOURCE=ON compiles the external/faac submodule into the
+#     shim, which gives a self-contained static library.
+#  4. An installed FAAC, found through its CMake package (faac::faad3, faac::faar).
 set(FAAD3_CMAKE_TARGET "" CACHE STRING "Existing CMake target that provides libfaad3")
-option(FAAD3_USE_BUNDLED_SOURCE "Build libfaad3 from the external/faac submodule instead of depending on an installed library" OFF)
+set(FAAR_CMAKE_TARGET "" CACHE STRING "Existing CMake target that provides libfaar")
+option(FAAC_USE_BUNDLED_SOURCE "Compile libfaad3 and libfaar from the external/faac submodule instead of using an installed FAAC" OFF)
 set(FAAC_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/external/faac" CACHE PATH "FAAC source directory")
-set(FAAD3_BUNDLED_SOURCE OFF)
-if(FAAD3_CMAKE_TARGET)
-  if(NOT TARGET ${FAAD3_CMAKE_TARGET})
-    message(FATAL_ERROR "FAAD3_CMAKE_TARGET does not name an existing target: ${FAAD3_CMAKE_TARGET}")
+
+foreach(_name FAAD3 FAAR)
+  string(TOLOWER ${_name} _lib)
+  if(${_name}_CMAKE_TARGET)
+    if(NOT TARGET ${${_name}_CMAKE_TARGET})
+      message(FATAL_ERROR "${_name}_CMAKE_TARGET does not name an existing target: ${${_name}_CMAKE_TARGET}")
+    endif()
+    set(${_name}_TARGET ${${_name}_CMAKE_TARGET})
+  elseif(TARGET ${_lib})
+    set(${_name}_TARGET ${_lib})
+  else()
+    set(${_name}_TARGET "")
   endif()
-  set(FAAD3_TARGET ${FAAD3_CMAKE_TARGET})
-elseif(TARGET faad3)
-  set(FAAD3_TARGET faad3)
-elseif(FAAD3_USE_BUNDLED_SOURCE AND EXISTS "${FAAC_SOURCE_DIR}/libfaad/meson.build")
+  set(${_name}_BUNDLED_SOURCE OFF)
+endforeach()
+
+if(FAAC_USE_BUNDLED_SOURCE AND (NOT FAAD3_TARGET OR NOT FAAR_TARGET))
+  if(NOT EXISTS "${FAAC_SOURCE_DIR}/libfaad/meson.build")
+    message(FATAL_ERROR "FAAC_USE_BUNDLED_SOURCE is ON but ${FAAC_SOURCE_DIR} has no sources. Run: git submodule update --init external/faac")
+  endif()
+endif()
+
+if(FAAC_USE_BUNDLED_SOURCE AND NOT FAAD3_TARGET)
   add_library(faad3_bundled OBJECT
     "${FAAC_SOURCE_DIR}/libfaad/decoder.c"
     "${FAAC_SOURCE_DIR}/libfaad/bits.c"
@@ -93,41 +112,12 @@ elseif(FAAD3_USE_BUNDLED_SOURCE AND EXISTS "${FAAC_SOURCE_DIR}/libfaad/meson.bui
   )
   set(FAAD3_TARGET faad3_bundled)
   set(FAAD3_BUNDLED_SOURCE ON)
-else()
-  find_package(PkgConfig QUIET)
-  if(PkgConfig_FOUND)
-    pkg_check_modules(FAAD3 QUIET IMPORTED_TARGET faad3)
-  endif()
-  if(TARGET PkgConfig::FAAD3)
-    set(FAAD3_TARGET PkgConfig::FAAD3)
-  else()
-    find_path(FAAD3_INCLUDE_DIR faad3.h)
-    find_library(FAAD3_LIBRARY NAMES faad3)
-    if(NOT FAAD3_INCLUDE_DIR OR NOT FAAD3_LIBRARY)
-      message(FATAL_ERROR "libfaad3 was not found. Install FAAC/FAAD3 or set FAAD3_CMAKE_TARGET, FAAD3_INCLUDE_DIR and FAAD3_LIBRARY.")
-    endif()
-    add_library(faad3_external UNKNOWN IMPORTED)
-    set_target_properties(faad3_external PROPERTIES
-      IMPORTED_LOCATION "${FAAD3_LIBRARY}"
-      INTERFACE_INCLUDE_DIRECTORIES "${FAAD3_INCLUDE_DIR}"
-    )
-    set(FAAD3_TARGET faad3_external)
-  endif()
 endif()
 
 # FAAD2 resampled the streams it assumed carried implicit SBR: AAC-LC at or
 # below 24 kHz came back at twice the rate, and above 24 kHz at the core rate.
 # The shim does the same with libfaar, which ships with FAAC like libfaad3.
-set(FAAR_CMAKE_TARGET "" CACHE STRING "Existing CMake target that provides libfaar")
-set(FAAR_BUNDLED_SOURCE OFF)
-if(FAAR_CMAKE_TARGET)
-  if(NOT TARGET ${FAAR_CMAKE_TARGET})
-    message(FATAL_ERROR "FAAR_CMAKE_TARGET does not name an existing target: ${FAAR_CMAKE_TARGET}")
-  endif()
-  set(FAAR_TARGET ${FAAR_CMAKE_TARGET})
-elseif(TARGET faar)
-  set(FAAR_TARGET faar)
-elseif(FAAD3_BUNDLED_SOURCE)
+if(FAAC_USE_BUNDLED_SOURCE AND NOT FAAR_TARGET)
   add_library(faar_bundled OBJECT
     "${FAAC_SOURCE_DIR}/libfaar/polyresample.c"
     "${FAAC_SOURCE_DIR}/libfaar/dft_coeffs.c"
@@ -144,27 +134,35 @@ elseif(FAAD3_BUNDLED_SOURCE)
   )
   set(FAAR_TARGET faar_bundled)
   set(FAAR_BUNDLED_SOURCE ON)
-else()
-  find_package(PkgConfig QUIET)
-  if(PkgConfig_FOUND)
-    pkg_check_modules(FAAR QUIET IMPORTED_TARGET faar)
-  endif()
-  if(TARGET PkgConfig::FAAR)
-    set(FAAR_TARGET PkgConfig::FAAR)
-  else()
-    find_path(FAAR_INCLUDE_DIR faar.h)
-    find_library(FAAR_LIBRARY NAMES faar)
-    if(NOT FAAR_INCLUDE_DIR OR NOT FAAR_LIBRARY)
-      message(FATAL_ERROR "libfaar was not found. Install FAAC, set FAAR_CMAKE_TARGET, FAAR_INCLUDE_DIR and FAAR_LIBRARY.")
-    endif()
-    add_library(faar_external UNKNOWN IMPORTED)
-    set_target_properties(faar_external PROPERTIES
-      IMPORTED_LOCATION "${FAAR_LIBRARY}"
-      INTERFACE_INCLUDE_DIRECTORIES "${FAAR_INCLUDE_DIR}"
-    )
-    set(FAAR_TARGET faar_external)
-  endif()
 endif()
+
+# Whatever is still missing comes from an installed FAAC. Set CMAKE_PREFIX_PATH
+# to its install prefix (PKG_CONFIG_PATH is not consulted), and
+# FAAC_USE_STATIC_LIBS=ON to link its static archives.
+set(FAAC_PACKAGE_USED OFF)
+set(_faac_components "")
+if(NOT FAAD3_TARGET)
+  list(APPEND _faac_components faad3)
+endif()
+if(NOT FAAR_TARGET)
+  list(APPEND _faac_components faar)
+endif()
+if(_faac_components)
+  find_package(faac CONFIG QUIET COMPONENTS ${_faac_components})
+  foreach(_c IN LISTS _faac_components)
+    if(NOT TARGET faac::${_c})
+      message(FATAL_ERROR "FAAC component ${_c} was not found. Set CMAKE_PREFIX_PATH to a FAAC install that provides the faac CMake package (built with -Ddecoder=true), or configure with -DFAAC_USE_BUNDLED_SOURCE=ON (after git submodule update --init external/faac).")
+    endif()
+  endforeach()
+  if(NOT FAAD3_TARGET)
+    set(FAAD3_TARGET faac::faad3)
+  endif()
+  if(NOT FAAR_TARGET)
+    set(FAAR_TARGET faac::faar)
+  endif()
+  set(FAAC_PACKAGE_USED ON)
+endif()
+
 include(GNUInstallDirs)
 
 if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
@@ -312,20 +310,16 @@ function(transform_pc_file INPUT_FILE OUTPUT_FILE VERSION)
 
   set(FAAD_PC_LIBS_PRIVATE "")
   set(FAAD_PC_REQUIRES_PRIVATE "")
-  if(NOT FAAD3_BUNDLED_SOURCE)
-    if(TARGET PkgConfig::FAAD3)
-      set(FAAD_PC_REQUIRES_PRIVATE "faad3")
-    else()
-      set(FAAD_PC_LIBS_PRIVATE "-lfaad3")
+  # An installed FAAC ships faad3.pc and faar.pc. Targets supplied by a parent
+  # project carry no pkg-config metadata, so name those libraries instead.
+  foreach(_lib faad3 faar)
+    string(TOUPPER ${_lib} _name)
+    if(${_lib} IN_LIST _faac_components)
+      string(APPEND FAAD_PC_REQUIRES_PRIVATE " ${_lib}")
+    elseif(NOT ${_name}_BUNDLED_SOURCE)
+      string(APPEND FAAD_PC_LIBS_PRIVATE " -l${_lib}")
     endif()
-  endif()
-  if(NOT FAAR_BUNDLED_SOURCE)
-    if(TARGET PkgConfig::FAAR)
-      string(APPEND FAAD_PC_REQUIRES_PRIVATE " faar")
-    else()
-      string(APPEND FAAD_PC_LIBS_PRIVATE " -lfaar")
-    endif()
-  endif()
+  endforeach()
   if(NOT WIN32)
     string(APPEND FAAD_PC_LIBS_PRIVATE " -lm")
   endif()
