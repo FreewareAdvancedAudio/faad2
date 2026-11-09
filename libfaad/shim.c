@@ -447,6 +447,13 @@ long NeAACDecInit(NeAACDecHandle h, unsigned char *buffer, unsigned long buffer_
         }
         faad_decoder_close(&probe);
     }
+    /* FAAD2 2.11.3 upmixed every mono stream to stereo (implicit PS signalling):
+     * the Init functions reported two channels and every frame that decoded to
+     * one channel came back as dual-mono, so PS showing up mid-stream (ADTS
+     * cannot signal it up front) never changes the channel count. The frames
+     * are upmixed per frame in shim_decode, as FAAD2 did. */
+    if (*channels == 1)
+        *channels = 2;
     /* A stream without SBR data at or below 24 kHz is assumed to carry SBR
      * implicitly, and FAAD2 reported and returned its doubled rate. */
     info.object_type = probed;
@@ -516,6 +523,9 @@ char NeAACDecInit2(NeAACDecHandle h, unsigned char *pBuffer, unsigned long size,
     /* FAAD2 reported the channels of the core, which is mono for PS streams;
      * the frames then carry two. */
     *channels = (unsigned char)(info.object_type == FAAD_OBJ_HE_AAC_V2 ? 1 : info.channels);
+    /* FAAD2 2.11.3 upmixed every mono stream to stereo (implicit PS signalling). */
+    if (*channels == 1)
+        *channels = 2;
     /* FAAD2 returned the channel configuration index, which is 7 for 7.1. */
     if (*channels == 8)
         *channels = 7;
@@ -593,6 +603,9 @@ char NeAACDecAudioSpecificConfig(unsigned char *pBuffer, unsigned long size,
     /* The channel configuration index, which is 7 for 7.1. */
     asc->channelsConfiguration = (unsigned char)(info.object_type == FAAD_OBJ_HE_AAC_V2 ? 1 :
                                                  info.channels == 8 ? 7 : info.channels);
+    /* FAAD2 2.11.3 upmixed mono to stereo in the ASC too (implicit PS). */
+    if (asc->channelsConfiguration == 1)
+        asc->channelsConfiguration = 2;
     asc->frameLengthFlag = (info.frame_samples % 960) == 0 && (info.frame_samples % 1024) != 0;
     {
         unsigned long core = asc->sbr_present_flag > 0 ? info.sample_rate / 2 : info.sample_rate;
@@ -875,13 +888,13 @@ static void *shim_decode(shim_t *s, NeAACDecFrameInfo *fi, const uint8_t *buf, u
         st_type = T_F32;
     }
     downmix = s->downmix_on && (n == 5 || n == 6);
-    out_ch = downmix ? 2 : n;
+    out_ch = n == 1 ? 2 : (downmix ? 2 : n);
     moved = build_perm(info.channel_mask, n, perm, pos);
     osz = out_sample_bytes(fmt);
     need = (size_t)frames * out_ch * osz;
 
     src = (upsampled || downsampled) ? src_pcm : s->pcm;
-    if (!downmix && !moved &&
+    if (!downmix && !moved && n != 1 &&
         ((st_type == T_I16 && fmt == FAAD_FMT_16BIT) ||
          (st_type == T_I32 && fmt == FAAD_FMT_24BIT) ||
          (st_type == T_F32 && fmt == FAAD_FMT_FLOAT))) {
@@ -908,6 +921,26 @@ static void *shim_decode(shim_t *s, NeAACDecFrameInfo *fi, const uint8_t *buf, u
                 double bl = x[perm[3]], br = x[perm[4]];
                 put_sample(fmt, out, (size_t)i * 2, DM_MUL * (l + cen * RSQRT2 + bl * RSQRT2));
                 put_sample(fmt, out, (size_t)i * 2 + 1, DM_MUL * (r + cen * RSQRT2 + br * RSQRT2));
+            }
+        } else if (n == 1) {
+            if (st_type == T_F32) {
+                const float *f = (const float *)src;
+                for (i = 0; i < frames; i++) {
+                    put_sample(fmt, out, (size_t)i * 2, f[i]);
+                    put_sample(fmt, out, (size_t)i * 2 + 1, f[i]);
+                }
+            } else if (st_type == T_I16) {
+                const int16_t *p = (const int16_t *)src;
+                for (i = 0; i < frames; i++) {
+                    ((int16_t *)out)[(size_t)i * 2] = p[i];
+                    ((int16_t *)out)[(size_t)i * 2 + 1] = p[i];
+                }
+            } else {
+                const int32_t *p = (const int32_t *)src;
+                for (i = 0; i < frames; i++) {
+                    ((int32_t *)out)[(size_t)i * 2] = p[i];
+                    ((int32_t *)out)[(size_t)i * 2 + 1] = p[i];
+                }
             }
         } else if (st_type == T_F32) {
             const float *f = (const float *)src;
@@ -942,7 +975,7 @@ static void *shim_decode(shim_t *s, NeAACDecFrameInfo *fi, const uint8_t *buf, u
     fi->sbr = downsampled ? SBR_DOWNSAMPLED :
               upsampled ? NO_SBR_UPSAMPLED : (flags & FAAD_FRAME_SBR) ? SBR_UPSAMPLED : NO_SBR;
     fi->ps = (flags & FAAD_FRAME_PS) ? 1 : 0;
-    if (downmix) {
+    if (downmix || n == 1) {
         fi->num_front_channels = 2;
         fi->channel_position[0] = FRONT_CHANNEL_LEFT;
         fi->channel_position[1] = FRONT_CHANNEL_RIGHT;
