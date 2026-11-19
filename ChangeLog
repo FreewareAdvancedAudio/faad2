@@ -1,4 +1,7 @@
-Next release:
+2.12.0 (2026-11-18):
+	[ Nils Schimmelmann ]
+	* Build against FAAC 3.0 (libfaad3 and libfaar from the external/faac
+	  submodule).
 	* Replace the legacy decoder with a library-only NeAACDec API shim over
 	  libfaad3, retaining the libfaad.so.2 ABI and FAAD2 channel order/positions.
 	  The CLI now ships with libfaad3.
